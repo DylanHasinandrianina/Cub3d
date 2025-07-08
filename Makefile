@@ -6,7 +6,7 @@
 #    By: mgodawat <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/08 13:47:20 by mgodawat          #+#    #+#              #
-#    Updated: 2025/07/08 15:05:59 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/07/08 15:58:12 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,29 +17,27 @@ CFLAGS = -Wall -Werror -Wextra -Iincludes -Ilibft/includes -Iminilibx-linux -g
 NAME = cub3d
 SRCS_DIR = src
 OBJS_DIR = objs
-
-# UPDATED: Recursively find all .c files in SRCS_DIR and its subdirectories
 SRCS = $(shell find $(SRCS_DIR) -name '*.c')
-
-# Generate object file paths in OBJS_DIR, maintaining the subdirectory structure
 OBJS = $(patsubst $(SRCS_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
 
 # --- Library Configurations ---
-# libft configuration
 LIBFT = ./libft/libft.a
-
-# minilibx configuration
-MLX_REPO = https://github.com/42Paris/minilibx-linux.git
 MLX_DIR = minilibx-linux
-MLX_CHECK = $(MLX_DIR)/.git
 MLX = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
 
 # --- Rules ---
 
-all: $(NAME)
+all:
+	@# NEW: Check if MiniLibX exists before trying to build
+	@if [ ! -d "$(MLX_DIR)" ]; then \
+		echo "❌ Error: MiniLibX directory not found."; \
+		echo "👉 Please run 'make mlx' to clone the library first."; \
+		exit 1; \
+	fi
+	@$(MAKE) $(NAME)
 
-# Main executable target depends on the object files and the minilibx library
-$(NAME): $(OBJS) $(MLX_CHECK)
+# Main executable target
+$(NAME): $(OBJS)
 	@echo "📚 Building libft..."
 	@$(MAKE) -s -C ./libft
 	@echo "🖼️  Building minilibx..."
@@ -48,16 +46,16 @@ $(NAME): $(OBJS) $(MLX_CHECK)
 	@$(CC) $(OBJS) $(LIBFT) $(MLX) -o $(NAME)
 	@echo "🚀 Done! Executable '$(NAME)' is ready to use."
 
-# UPDATED: Rule to compile source files into object files, creating subdirectories as needed
+# Rule to compile source files into object files
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@echo "⚙️  Compiling $<..."
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-# Rule to clone minilibx if not present
-$(MLX_CHECK):
-	@echo "🌐 MiniLibX not found. Cloning repository..."
-	@git clone --quiet $(MLX_REPO) $(MLX_DIR)
+# NEW: Dedicated rule to clone the MiniLibX library
+mlx:
+	@echo "🌐 Cloning MiniLibX repository..."
+	@git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR)
 	@echo "✅ MiniLibX cloned successfully."
 
 clean:
@@ -80,4 +78,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re mlx

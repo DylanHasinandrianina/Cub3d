@@ -6,7 +6,7 @@
 /*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/08 14:55:12 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/08 15:50:17 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "../libft/includes/libft.h"
+# include "../minilibx-linux/mlx.h"
 # include "test.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
