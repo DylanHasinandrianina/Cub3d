@@ -1,0 +1,30 @@
+# --- Ignore Compiled Binaries & Objects ---
+# Ignore the final executable
+*.out
+$(NAME)
+cub3d
+
+# Ignore the object files directory
+/objs/
+
+# --- Ignore Cloned Libraries ---
+# These are fetched by the Makefile, so they don't belong in the repo
+/minilibx-linux/
+# It's also good practice to ignore libft if it's managed separately
+/libft/
+
+# --- Ignore IDE & Editor-Specific Files ---
+# For VSCode / Cursor
+.vscode/
+*.code-workspace
+
+# --- Ignore Common OS Files ---
+# For macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# For Linux
+*~
+.swp
+.swo

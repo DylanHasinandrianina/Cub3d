@@ -1,0 +1,30 @@
+# This workflow compiles the project on every push to ensure it builds correctly.
+name: 🏗️ Compile Build
+
+on:
+  push: # Run on every push to any branch
+    branches: [ main, master, develop ]
+  pull_request: # Also run on pull requests targeting the main branches
+    branches: [ main, master, develop ]
+
+jobs:
+  build:
+    name: Build Project
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Check out the repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # We also need to clone the submodules (like libft if you add it as one)
+          submodules: 'recursive'
+
+      # 2. Install all necessary system dependencies for MiniLibX
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libx11-dev libxext-dev libbsd-dev
+
+      # 3. Run the Makefile to build the project
+      - name: Run Makefile
+        run: make

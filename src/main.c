@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgodawat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/08 13:49:48 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/07/08 13:47:40 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/07/08 13:56:00 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../includes/cub3d.h"
 
-# include "../libft/includes/libft.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-#endif
+int	main(void)
+{
+	printf("Hello World\n");
+	ft_putstr_fd("Hello from libft\n", 1);
+	return (0);
+}
