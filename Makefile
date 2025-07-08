@@ -6,7 +6,7 @@
 #    By: mgodawat <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/08 13:47:20 by mgodawat          #+#    #+#              #
-#    Updated: 2025/07/08 13:54:14 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/07/08 15:05:59 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,10 @@ NAME = cub3d
 SRCS_DIR = src
 OBJS_DIR = objs
 
-# Automatically find all .c files in SRCS_DIR
-SRCS = $(wildcard $(SRCS_DIR)/*.c)
-# Generate object file paths in OBJS_DIR, replacing src/ with objs/ and .c with .o
+# UPDATED: Recursively find all .c files in SRCS_DIR and its subdirectories
+SRCS = $(shell find $(SRCS_DIR) -name '*.c')
+
+# Generate object file paths in OBJS_DIR, maintaining the subdirectory structure
 OBJS = $(patsubst $(SRCS_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
 
 # --- Library Configurations ---
@@ -47,16 +48,10 @@ $(NAME): $(OBJS) $(MLX_CHECK)
 	@$(CC) $(OBJS) $(LIBFT) $(MLX) -o $(NAME)
 	@echo "🚀 Done! Executable '$(NAME)' is ready to use."
 
-# Rule to create the objects directory.
-# This is an order-only prerequisite for the object files.
-$(OBJS_DIR):
-	@echo "📁 Creating object directory..."
-	@mkdir -p $(OBJS_DIR)
-
-# Rule to compile source files from SRCS_DIR into object files in OBJS_DIR
-# This depends on the object directory existing first.
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJS_DIR)
+# UPDATED: Rule to compile source files into object files, creating subdirectories as needed
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@echo "⚙️  Compiling $<..."
+	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 # Rule to clone minilibx if not present

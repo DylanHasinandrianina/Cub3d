@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/08 14:55:12 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/07/08 14:53:00 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/07/08 14:59:37 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef TEST_H
+# define TEST_H
 
-# include "../libft/includes/libft.h"
-# include "test.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	hello_from_bonus(void);
+void	hello_from_playermovement(void);
+void	hello_from_raycasting(void);
+void	hello_from_rendering(void);
+void	hello_from_mapvalidation(void);
+void	hello_from_parser(void);
 
 #endif

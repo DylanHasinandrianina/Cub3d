@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 13:47:40 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/08 13:56:00 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/07/08 14:58:26 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/07/08 14:59:04 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int	main(void)
+void	hello_from_parser(void)
 {
-	printf("Hello World\n");
-	ft_putstr_fd("Hello from libft\n", 1);
-	return (0);
+	printf("Hello from parserr/parser\n");
 }
