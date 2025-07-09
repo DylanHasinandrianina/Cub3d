@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:50:56 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/08 15:58:51 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/09 12:34:07 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 int	main(void)
 {
+	void	*mlx;
+	void	*mlx_win;
+
 	hello_from_playermovement();
 	hello_from_raycasting();
 	hello_from_rendering();
 	hello_from_mapvalidation();
 	hello_from_parser();
 	hello_from_bonus();
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "cub3D");
+    mlx_loop(mlx);
 }
