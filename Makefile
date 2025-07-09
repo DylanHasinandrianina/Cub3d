@@ -6,7 +6,7 @@
 #    By: mgodawat <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/08 13:47:20 by mgodawat          #+#    #+#              #
-#    Updated: 2025/07/08 15:58:12 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/07/09 12:17:29 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,55 +21,75 @@ SRCS = $(shell find $(SRCS_DIR) -name '*.c')
 OBJS = $(patsubst $(SRCS_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
 
 # --- Library Configurations ---
-LIBFT = ./libft/libft.a
+LIBFT_DIR = ./libft
+LIBFT_A = $(LIBFT_DIR)/libft.a
+
 MLX_DIR = minilibx-linux
-MLX = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
+MLX_A = $(MLX_DIR)/libmlx.a
+MLX_LNK = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
 
 # --- Rules ---
 
-all:
-	@# NEW: Check if MiniLibX exists before trying to build
-	@if [ ! -d "$(MLX_DIR)" ]; then \
-		echo "❌ Error: MiniLibX directory not found."; \
-		echo "👉 Please run 'make mlx' to clone the library first."; \
-		exit 1; \
-	fi
-	@$(MAKE) $(NAME)
+all: $(NAME)
 
-# Main executable target
-$(NAME): $(OBJS)
-	@echo "📚 Building libft..."
-	@$(MAKE) -s -C ./libft
-	@echo "🖼️  Building minilibx..."
-	@$(MAKE) -s -C $(MLX_DIR)
+help:
+	@echo "--------------------------------------------------"
+	@echo " cub3d Makefile Help 🧊"
+	@echo "--------------------------------------------------"
+	@echo "Usage: make [target]"
+	@echo ""
+	@echo "Targets:"
+	@echo "  make / make all    🚀 Compiles the project."
+	@echo "  make mlx           🌐 Clones the MiniLibX graphics library."
+	@echo "  make clean         🧹 Removes temporary object files."
+	@echo "  make fclean        🗑️  Removes all compiled files (inc. executable)."
+	@echo "  make re            🔄 Fully recompiles the project from scratch."
+	@echo "  make help          ❓ Shows this help message."
+	@echo ""
+
+$(NAME): $(OBJS) $(LIBFT_A) $(MLX_A)
 	@echo "🔗 Linking executable '$(NAME)'..."
-	@$(CC) $(OBJS) $(LIBFT) $(MLX) -o $(NAME)
+	@$(CC) $(OBJS) $(LIBFT_A) $(MLX_LNK) -o $(NAME)
 	@echo "🚀 Done! Executable '$(NAME)' is ready to use."
 
-# Rule to compile source files into object files
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+$(LIBFT_A):
+	@echo "📚 Building libft..."
+	@$(MAKE) -s -C $(LIBFT_DIR)
+
+# MODIFIED: Changed the dependency to be order-only.
+$(MLX_A): | check_mlx
+	@echo "🖼️  Building minilibx..."
+	@$(MAKE) -s -C $(MLX_DIR)
+
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | check_mlx
 	@echo "⚙️  Compiling $<..."
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-# NEW: Dedicated rule to clone the MiniLibX library
 mlx:
 	@echo "🌐 Cloning MiniLibX repository..."
 	@git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR)
 	@echo "✅ MiniLibX cloned successfully."
 
+check_mlx:
+	@if [ ! -d "$(MLX_DIR)" ]; then \
+		echo "❌ Error: MiniLibX directory not found."; \
+		echo "👉 Please run 'make mlx' to clone the library first."; \
+		exit 1; \
+	fi
+
 clean:
-	@echo "🧹 Cleaning libft..."
-	@$(MAKE) -s -C ./libft fclean
 	@echo "🧹 Cleaning object directory..."
 	@rm -rf $(OBJS_DIR)
-	@if [ -d "$(MLX_DIR)" ]; then \
-		echo "🧹 Cleaning minilibx..."; \
-		$(MAKE) -s -C $(MLX_DIR) clean; \
-	fi
+	@if [ -d "$(LIBFT_DIR)" ]; then $(MAKE) -s -C $(LIBFT_DIR) fclean; fi
+	@if [ -d "$(MLX_DIR)" ]; then $(MAKE) -s -C $(MLX_DIR) clean; fi
 	@echo "✅ Clean complete."
 
-fclean: clean
+fclean:
+	@echo "🗑️  Cleaning object directory..."
+	@rm -rf $(OBJS_DIR)
+	@echo "🗑️  Cleaning libft..."
+	@if [ -d "$(LIBFT_DIR)" ]; then $(MAKE) -s -C $(LIBFT_DIR) fclean; fi
 	@echo "🗑️  Removing executable '$(NAME)'..."
 	@rm -f $(NAME)
 	@echo "🗑️  Removing minilibx directory..."
@@ -78,4 +98,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re mlx
+.PHONY: all help mlx check_mlx clean fclean re
