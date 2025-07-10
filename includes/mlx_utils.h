@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 14:20:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/09 14:25:07 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/11 00:58:47 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@
 # define MOUSE_PRESS 4
 # define MOUSE_MOVE 6
 # define CLOSE_BUTTON 17
+
+# define W 119
+# define A 97
+# define S 115
+# define D 100
 
 # define KEY_ESC 65307
 # define KEY_LEFT 65361
