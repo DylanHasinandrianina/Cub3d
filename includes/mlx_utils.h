@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 14:20:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/11 00:58:47 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/11 18:54:41 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 # include "../minilibx-linux/mlx.h"
 
-# define STEP 10.0
-# define ZOOM_FACTOR 1.2
-# define SIZE_W 960
-# define SIZE_H 540
+# define SIZE_W 1900
+# define SIZE_H 1000
+# define TITLE_SIZE 30
+# define FIELD_OF_VIEW 60
+# define ROTATION_SPEED 0.045
+# define PLAYER_SPEED 4
 
 # define KEY_PRESS 2
 # define MOUSE_PRESS 4
@@ -42,11 +44,5 @@
 # define KEY_F1 65470
 # define KEY_F2 65471
 # define KEY_F3 65472
-
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-}			t_vars;
 
 #endif
