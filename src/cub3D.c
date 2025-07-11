@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:50:56 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/08 15:58:51 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/11 18:05:48 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int	main(void)
 {
-	hello_from_playermovement();
-	hello_from_raycasting();
-	hello_from_rendering();
-	hello_from_mapvalidation();
-	hello_from_parser();
-	hello_from_bonus();
+	t_game	*game;
+
+	game = init_mock_data();
+	if (!game)
+		return (ft_putendl_fd("error: main", 2), 1);
+	init_mlx(game);
+	setup_hooks(game);
+	mlx_loop(game->mlx->mlx_ptr);
 }

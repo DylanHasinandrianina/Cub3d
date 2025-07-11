@@ -11,11 +11,11 @@ cub3d
 # These are fetched by the Makefile, so they don't belong in the repo
 /minilibx-linux/
 # It's also good practice to ignore libft if it's managed separately
-/libft/
+# /libft/
 
 # --- Ignore IDE & Editor-Specific Files ---
 # For VSCode / Cursor
-.vscode/
+# .vscode/
 *.code-workspace
 
 # --- Ignore Common OS Files ---

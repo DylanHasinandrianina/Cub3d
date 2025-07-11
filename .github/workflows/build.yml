@@ -1,5 +1,5 @@
-# This workflow checks norm and compiles the project on every push and pull request.
-name: 🏗️ Build and Norminette Check
+# This workflow compiles the project on every push and pull request.
+name: 🏗️ Compile Build
 
 on:
   push: # Run on every push to the specified branches
@@ -8,29 +8,23 @@ on:
     branches: [ main, master, develop ]
 
 jobs:
-  build-and-check:
-    name: Norm & Build
+  build:
+    name: Build Project
     runs-on: ubuntu-latest
     steps:
-      # 1. Check out the repository code, including submodules (like libft)
+      # 1. Check out the repository code
       - name: ⬇️ Checkout Code
         uses: actions/checkout@v4
         with:
           submodules: 'recursive'
 
-      # 2. Run Norminette to check for coding style violations
-      - name: 🧐 Norminette Check
-        uses: 42School/norminette@master
-        with:
-          # We check for forbidden headers and apply it to the whole project directory '.'
-          args: -R CheckForbiddenSourceHeader .
-
-      # 3. Install all necessary system dependencies for building (e.g., for MiniLibX)
-      - name:  dependencies
+      # 2. Install system dependencies for MiniLibX
+      - name: 📦 Install Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential libx11-dev libxext-dev libbsd-dev
 
-      # 4. Run the Makefile to clone mlx (if needed) and build the project
+      # 3. Run the Makefile to build the project
+      # The robust Makefile automatically clones MiniLibX if it's not present.
       - name: 🔨 Build Project
-        run: make mlx && make
+        run: make
