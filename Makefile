@@ -6,7 +6,7 @@
 #    By: mgodawat <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/08 13:47:20 by mgodawat          #+#    #+#              #
-#    Updated: 2025/07/08 15:58:12 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/07/11 19:03:02 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,61 +21,66 @@ SRCS = $(shell find $(SRCS_DIR) -name '*.c')
 OBJS = $(patsubst $(SRCS_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
 
 # --- Library Configurations ---
-LIBFT = ./libft/libft.a
+LIBFT_DIR = ./libft
+LIBFT_A = $(LIBFT_DIR)/libft.a
+
 MLX_DIR = minilibx-linux
-MLX = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
+MLX_A = $(MLX_DIR)/libmlx.a
+MLX_LNK = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
+MLX_GIT = https://github.com/42Paris/minilibx-linux.git
 
-# --- Rules ---
+# --- Main Rules ---
 
-all:
-	@# NEW: Check if MiniLibX exists before trying to build
-	@if [ ! -d "$(MLX_DIR)" ]; then \
-		echo "❌ Error: MiniLibX directory not found."; \
-		echo "👉 Please run 'make mlx' to clone the library first."; \
-		exit 1; \
-	fi
-	@$(MAKE) $(NAME)
+all: $(NAME)
 
-# Main executable target
-$(NAME): $(OBJS)
-	@echo "📚 Building libft..."
-	@$(MAKE) -s -C ./libft
-	@echo "🖼️  Building minilibx..."
-	@$(MAKE) -s -C $(MLX_DIR)
+# The executable depends on object files AND the actual library files.
+$(NAME): $(OBJS) $(LIBFT_A) $(MLX_A)
 	@echo "🔗 Linking executable '$(NAME)'..."
-	@$(CC) $(OBJS) $(LIBFT) $(MLX) -o $(NAME)
+	@$(CC) $(OBJS) $(LIBFT_A) $(MLX_LNK) -o $(NAME)
 	@echo "🚀 Done! Executable '$(NAME)' is ready to use."
 
-# Rule to compile source files into object files
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+# --- Library Rules ---
+
+# Rule to build libft.a.
+$(LIBFT_A):
+	@echo "📚 Building libft..."
+	@$(MAKE) -s -C $(LIBFT_DIR)
+
+# Rule to build libmlx.a. It now depends on the directory existing.
+$(MLX_A): $(MLX_DIR)
+	@echo "🖼️  Building minilibx..."
+	@$(MAKE) -s -C $(MLX_DIR)
+
+# --- Compilation and Utility Rules ---
+
+# Rule to compile .c files. It has an order-only dependency on the MLX directory.
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(MLX_DIR)
 	@echo "⚙️  Compiling $<..."
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-# NEW: Dedicated rule to clone the MiniLibX library
-mlx:
-	@echo "🌐 Cloning MiniLibX repository..."
-	@git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR)
-	@echo "✅ MiniLibX cloned successfully."
+# NEW: Rule to clone MiniLibX if the directory doesn't exist.
+$(MLX_DIR):
+	@echo "🌐 MiniLibX not found. Cloning repository..."
+	@git clone $(MLX_GIT) $(MLX_DIR)
+
+# --- Cleaning Rules ---
 
 clean:
-	@echo "🧹 Cleaning libft..."
-	@$(MAKE) -s -C ./libft fclean
 	@echo "🧹 Cleaning object directory..."
 	@rm -rf $(OBJS_DIR)
-	@if [ -d "$(MLX_DIR)" ]; then \
-		echo "🧹 Cleaning minilibx..."; \
-		$(MAKE) -s -C $(MLX_DIR) clean; \
-	fi
+	@if [ -d "$(LIBFT_DIR)" ]; then $(MAKE) -s -C $(LIBFT_DIR) fclean; fi
+	@if [ -d "$(MLX_DIR)" ]; then $(MAKE) -s -C $(MLX_DIR) clean; fi
 	@echo "✅ Clean complete."
 
-fclean: clean
-	@echo "🗑️  Removing executable '$(NAME)'..."
+fclean:
+	@echo "🗑️  Cleaning everything..."
+	@rm -rf $(OBJS_DIR)
+	@if [ -d "$(LIBFT_DIR)" ]; then $(MAKE) -s -C $(LIBFT_DIR) fclean; fi
 	@rm -f $(NAME)
-	@echo "🗑️  Removing minilibx directory..."
 	@rm -rf $(MLX_DIR)
 	@echo "✨ Project fully cleaned."
 
 re: fclean all
 
-.PHONY: all clean fclean re mlx
+.PHONY: all clean fclean re

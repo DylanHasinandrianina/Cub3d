@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:20:24 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/11 18:52:54 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/11 19:00:48 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ t_game	*init_mock_data(void)
 	init_map(game);
 	init_player(game);
 	init_textures(game);
+	init_colors(game);
 	game->mlx = NULL;
 	game->img = NULL;
 	return (game);
