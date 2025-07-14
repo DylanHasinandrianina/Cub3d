@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/11 18:54:49 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:46:05 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,6 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
-
-typedef struct s_img
-{
-	void		*img_ptr;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_len;
-	int			endian;
-}				t_img;
-
-typedef struct s_mlx
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-}				t_mlx;
 
 typedef struct s_player
 {
@@ -78,6 +63,8 @@ void			init_mlx(t_game *game);
 void			setup_hooks(t_game *game);
 int				cleanup(t_game *game);
 void			err_exit(char *msg, t_game *game);
+int				rgb_to_int(double r, double g, double b);
+void			ft_put_pixel(t_game *game, int x, int y, int color);
 
 /** Mock parser function until Dylan gives the real thing */
 t_game			*init_mock_data(void);

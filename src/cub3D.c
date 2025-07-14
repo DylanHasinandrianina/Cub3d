@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:50:56 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/11 18:05:48 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:05:02 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ int	main(void)
 		return (ft_putendl_fd("error: main", 2), 1);
 	init_mlx(game);
 	setup_hooks(game);
+	mlx_pixel_put(game->mlx->mlx_ptr, game->mlx->win_ptr, SIZE_W / 2, SIZE_H
+		/ 2, 0xFFFFFF);
 	mlx_loop(game->mlx->mlx_ptr);
 }
