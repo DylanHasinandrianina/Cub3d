@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/13 12:32:05 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/14 12:24:32 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/07/14 15:12:08 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/07/14 16:24:13 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#ifndef MINIMAP_H
+# define MINIMAP_H
 
-int	rgb_to_int(double r, double g, double b)
+# include "mlx_utils.h"
+
+# define MINIMAP_SCALE 50
+
+typedef struct s_minimap
 {
-	int	color;
+	t_img	*img;
+	int		x;
+	int		y;
+	int		width;
+	int		height;
+	int		color;
+}			t_minimap;
 
-	color = 0;
-	color |= (int)(b * 255);
-	color |= (int)(g * 255) << 8;
-	color |= (int)(r * 255) << 16;
-	return (color);
-}
-
-void	put_pixel_to_img(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
+#endif
