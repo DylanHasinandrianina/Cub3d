@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D_bonus.c                                      :+:      :+:    :+:   */
+/*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 14:51:22 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/08 14:52:33 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/07/14 15:12:08 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/07/14 16:24:13 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#ifndef MINIMAP_H
+# define MINIMAP_H
 
-void	hello_from_bonus(void)
+# include "mlx_utils.h"
+
+# define MINIMAP_SCALE 50
+
+typedef struct s_minimap
 {
-	ft_putstr_fd("Hello from cub3D_bonus.c", 2);
-	return ;
-}
+	t_img	*img;
+	int		x;
+	int		y;
+	int		width;
+	int		height;
+	int		color;
+}			t_minimap;
+
+#endif

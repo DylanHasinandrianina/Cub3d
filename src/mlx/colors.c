@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 14:50:56 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/14 16:16:36 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/07/13 12:32:05 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/07/14 12:24:32 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int	main(void)
+int	rgb_to_int(double r, double g, double b)
 {
-	t_game	*game;
+	int	color;
 
-	game = init_mock_data();
-	if (!game)
-		return (ft_putendl_fd("error: main", 2), 1);
-	init_mlx(game);
-	init_minimap(game);
-	setup_hooks(game);
-	mlx_loop_hook(game->mlx->mlx_ptr, render_frame, game);
-	mlx_pixel_put(game->mlx->mlx_ptr, game->mlx->win_ptr, SIZE_W / 2, SIZE_H
-		/ 2, 0xFFFFFF);
-	mlx_loop(game->mlx->mlx_ptr);
+	color = 0;
+	color |= (int)(b * 255);
+	color |= (int)(g * 255) << 8;
+	color |= (int)(r * 255) << 16;
+	return (color);
+}
+
+void	put_pixel_to_img(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:34:21 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/11 18:50:04 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/14 15:37:15 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	cleanup(t_game *game)
 	}
 	free(game->img);
 	free(game->mlx);
+	free(game->minimap);
 	free(game);
 	return (0);
 }

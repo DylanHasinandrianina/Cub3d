@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 14:50:56 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/14 16:16:36 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/07/14 12:23:18 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/07/14 16:07:27 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	main(void)
+int	render_frame(t_game *game)
 {
-	t_game	*game;
+	int	y;
+	int	x;
 
-	game = init_mock_data();
-	if (!game)
-		return (ft_putendl_fd("error: main", 2), 1);
-	init_mlx(game);
-	init_minimap(game);
-	setup_hooks(game);
-	mlx_loop_hook(game->mlx->mlx_ptr, render_frame, game);
-	mlx_pixel_put(game->mlx->mlx_ptr, game->mlx->win_ptr, SIZE_W / 2, SIZE_H
-		/ 2, 0xFFFFFF);
-	mlx_loop(game->mlx->mlx_ptr);
+	y = 0;
+	while (y < SIZE_H)
+	{
+		x = 0;
+		while (x < SIZE_W)
+		{
+			if (y < SIZE_H / 2)
+				put_pixel_to_img(game->img, x, y, game->color->ceiling);
+			else
+				put_pixel_to_img(game->img, x, y, game->color->floor);
+			x++;
+		}
+		y++;
+	}
+	draw_minimap(game);
+	mlx_put_image_to_window(game->mlx->mlx_ptr, game->mlx->win_ptr,
+		game->img->img_ptr, 0, 0);
+	return (0);
 }
