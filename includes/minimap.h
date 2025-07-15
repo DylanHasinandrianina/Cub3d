@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:12:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/14 16:24:13 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:35:46 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 # include "mlx_utils.h"
 
 # define MINIMAP_SCALE 50
+
+typedef struct s_circle
+{
+	double	center_x;
+	double	center_y;
+	double	radius;
+	int		color;
+}			t_circle;
 
 typedef struct s_minimap
 {

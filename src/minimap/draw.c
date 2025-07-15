@@ -6,11 +6,12 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:56:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/14 16:21:09 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:40:36 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+#include <unistd.h>
 
 /*
 #define MINIMAP_SCALE 8
@@ -25,6 +26,11 @@ typedef struct s_minimap
 	int		color;
 }			t_minimap;
 */
+
+static void	draw_circle(void)
+{
+	t_circle	circle;
+}
 
 static void	draw_rect(t_minimap *minimap)
 {
