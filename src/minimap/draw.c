@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:56:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/15 20:15:24 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:25:24 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,32 +85,27 @@ void	draw_rect(t_minimap *minimap)
 
 static void	draw_line(t_line *line)
 {
-	double	dx;
-	double	dy;
-	int		steps;
-	double	x_inc;
-	double	y_inc;
 	double	current_x;
 	double	current_y;
 	int		i;
 
-	dx = line->x2 - line->x1;
-	dy = line->y2 - line->y1;
-	if (fabs(dx) > fabs(dy))
-		steps = fabs(dx);
+	line->dx = line->x2 - line->x1;
+	line->dy = line->y2 - line->y1;
+	if (fabs(line->dx) > fabs(line->dy))
+		line->steps = fabs(line->dx);
 	else
-		steps = fabs(dy);
-	x_inc = dx / (double)steps;
-	y_inc = dy / (double)steps;
+		line->steps = fabs(line->dy);
+	line->x_inc = line->dx / (double)line->steps;
+	line->y_inc = line->dy / (double)line->steps;
 	current_x = line->x1;
 	current_y = line->y1;
 	i = 0;
-	while (i <= steps)
+	while (i <= line->steps)
 	{
 		put_pixel_to_img(line->img, round(current_x), round(current_y),
 			line->color);
-		current_x += x_inc;
-		current_y += y_inc;
+		current_x += line->x_inc;
+		current_y += line->y_inc;
 		i++;
 	}
 }
