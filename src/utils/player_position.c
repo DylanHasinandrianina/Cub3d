@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:40:29 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/15 17:41:21 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:49:07 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static void	set_player_data(t_game *game, int map_y, int map_x)
 
 void	find_player_position(t_game *game)
 {
-	int map_y;
-	int map_x;
+	int	map_y;
+	int	map_x;
 
 	map_y = 0;
 	while (game->map[map_y])
