@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 16:22:24 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/14 16:22:45 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:43:19 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,11 @@
 void	init_map(t_game *game)
 {
 	game->map[0] = ft_strdup("11111111");
-	game->map[1] = ft_strdup("10000101");
-	game->map[2] = ft_strdup("10N00101");
+	game->map[1] = ft_strdup("1000N101");
+	game->map[2] = ft_strdup("10000101");
 	game->map[3] = ft_strdup("10000001");
 	game->map[4] = ft_strdup("11111111");
 	game->map[5] = NULL;
-}
-
-void	init_player(t_game *game)
-{
-	game->player->x = 2.5;
-	game->player->y = 2.5;
-	game->player->dir = -M_PI / 2;
 }
 
 void	init_textures(t_game *game)

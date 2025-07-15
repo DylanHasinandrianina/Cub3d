@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/14 16:23:39 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:25:19 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ int				render_frame(t_game *game);
 
 /** Minimap function */
 void			draw_minimap(t_game *game);
+void			draw_circle(t_circle *circle);
+void			draw_rect(t_minimap *minimap);
+void			find_player_position(t_game *game);
 
 /** Mock parser function until Dylan gives the real thing */
 t_game			*init_mock_data(void);

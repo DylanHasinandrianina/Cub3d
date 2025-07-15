@@ -6,12 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:56:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/15 13:40:36 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:20:50 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-#include <unistd.h>
 
 /*
 #define MINIMAP_SCALE 8
@@ -25,14 +24,44 @@ typedef struct s_minimap
 	int		height;
 	int		color;
 }			t_minimap;
+
+typedef struct s_circle
+{
+	double	center_x;
+	double	center_y;
+	double	radius;
+	int		color;
+}			t_circle;
 */
 
-static void	draw_circle(void)
+void	draw_circle(t_circle *circle)
 {
-	t_circle	circle;
+	int	y;
+	int	x;
+	int	radius;
+	int	dist_squared;
+
+	radius = circle->radius * circle->radius;
+	y = circle->center_y - circle->radius;
+	while (y <= circle->center_y + radius)
+	{
+		x = circle->center_x - circle->radius;
+		while (x <= circle->center_x + radius)
+		{
+			dist_squared = (x - circle->center_x) * (x - circle->center_x) + (y
+					- circle->center_y) * (y - circle->center_y);
+			if (dist_squared <= radius)
+			{
+				if (x >= 0 && x < SIZE_W && y >= 0 && y < SIZE_H)
+					put_pixel_to_img(circle->img, x, y, circle->color);
+			}
+			x++;
+		}
+		y++;
+	}
 }
 
-static void	draw_rect(t_minimap *minimap)
+void	draw_rect(t_minimap *minimap)
 {
 	int	curr_y;
 	int	curr_x;
@@ -51,31 +80,5 @@ static void	draw_rect(t_minimap *minimap)
 			curr_x++;
 		}
 		curr_y++;
-	}
-}
-
-void	draw_minimap(t_game *game)
-{
-	int	map_y;
-	int	map_x;
-
-	map_y = 0;
-	while (game->map[map_y])
-	{
-		map_x = 0;
-		while (game->map[map_y][map_x])
-		{
-			if (game->map[map_y][map_x] == '1')
-				game->minimap->color = 0x333333;
-			else
-				game->minimap->color = 0xCCCCCC;
-			game->minimap->x = map_x * MINIMAP_SCALE;
-			game->minimap->y = map_y * MINIMAP_SCALE;
-			game->minimap->width = MINIMAP_SCALE;
-			game->minimap->height = MINIMAP_SCALE;
-			draw_rect(game->minimap);
-			map_x++;
-		}
-		map_y++;
 	}
 }

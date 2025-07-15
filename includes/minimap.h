@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:12:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/15 13:35:46 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:44:06 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 
 # define MINIMAP_SCALE 50
 
+/** this structure will use by the stack no mem allocated */
 typedef struct s_circle
 {
+	t_img	*img;
 	double	center_x;
 	double	center_y;
 	double	radius;
@@ -34,5 +36,6 @@ typedef struct s_minimap
 	int		height;
 	int		color;
 }			t_minimap;
+
 
 #endif

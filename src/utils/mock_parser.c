@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:20:24 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/14 16:24:00 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:39:13 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_game	*init_mock_data(void)
 		return (ft_putendl_fd("error: malloc, init_mock_data", 2), NULL);
 	}
 	init_map(game);
-	init_player(game);
+	find_player_position(game);
 	init_textures(game);
 	init_colors(game);
 	return (game);
