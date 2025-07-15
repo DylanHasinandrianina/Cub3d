@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:18:43 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/15 17:51:12 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:03:24 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void	draw_minimap(t_game *game)
 		map_y++;
 	}
 	draw_player_dot(game, &player_dot);
-	// draw_player_direction_line(); TODO:
+	draw_player_direction_line(game);
 }

@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:56:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/15 16:20:50 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:02:08 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,49 @@ void	draw_rect(t_minimap *minimap)
 		}
 		curr_y++;
 	}
+}
+
+static void	draw_line(t_line *line)
+{
+	double	dx;
+	double	dy;
+	int		steps;
+	double	x_inc;
+	double	y_inc;
+	double	current_x;
+	double	current_y;
+	int		i;
+
+	dx = line->x2 - line->x1;
+	dy = line->y2 - line->y1;
+	if (fabs(dx) > fabs(dy))
+		steps = fabs(dx);
+	else
+		steps = fabs(dy);
+	x_inc = dx / (double)steps;
+	y_inc = dy / (double)steps;
+	current_x = line->x1;
+	current_y = line->y1;
+	i = 0;
+	while (i <= steps)
+	{
+		put_pixel_to_img(line->img, round(current_x), round(current_y),
+			line->color);
+		current_x += x_inc;
+		current_y += y_inc;
+		i++;
+	}
+}
+
+void	draw_player_direction_line(t_game *game)
+{
+	t_line	player_dir;
+
+	player_dir.img = game->img;
+	player_dir.color = 0xFF0000;
+	player_dir.x1 = game->player->x * MINIMAP_SCALE;
+	player_dir.y1 = game->player->y * MINIMAP_SCALE;
+	player_dir.x2 = (game->player->x * cos(game->player->dir)) * MINIMAP_SCALE;
+	player_dir.y2 = (game->player->y * cos(game->player->dir)) * MINIMAP_SCALE;
+	draw_line(&player_dir);
 }

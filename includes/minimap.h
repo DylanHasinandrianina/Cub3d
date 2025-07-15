@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:12:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/15 17:48:50 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/15 19:54:10 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ typedef struct s_circle
 	double	radius;
 	int		color;
 }			t_circle;
+
+typedef struct s_line
+{
+	t_img	*img;
+	int		color;
+	double	x1;
+	double	x2;
+	double	y1;
+	double	y2;
+}			t_line;
 
 typedef struct s_minimap
 {
