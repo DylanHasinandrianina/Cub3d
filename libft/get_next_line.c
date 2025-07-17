@@ -6,7 +6,7 @@
 /*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:16:51 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/07 17:02:58 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/07/17 14:04:16 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*read_buf;
 
+	if (fd == -1)
+		return (free(big_buf), big_buf = NULL, NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	while (!big_buf || !ft_strchr(big_buf, '\n'))

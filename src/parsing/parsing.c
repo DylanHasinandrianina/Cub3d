@@ -6,7 +6,7 @@
 /*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:13:01 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/17 13:11:03 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/07/17 14:07:02 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static char	**read_file_to_array(char **av)
 		i++;
 	}
 	content[i] = NULL;
-	return (close(fd), content);
+	return (get_next_line(-1), close(fd), content);
 }
 
 int	parsing(int ac, char **av, t_game *game)

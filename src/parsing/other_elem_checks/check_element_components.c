@@ -6,7 +6,7 @@
 /*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 18:17:13 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/16 11:14:36 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/07/17 13:28:43 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_texture_line_validity(char **split, int id, t_game *game)
 	int		fd;
 	char	*path;
 
-	if (!split[1] || split[2])
+	if (!split[1] || !ft_strcmp (split[1], "\n") || split[2])
 		return (ft_putstr_fd("Error\nTexture must have 2 tokens\n", 2), 0);
 	path = split[1];
 	fd = open(path, O_RDONLY);
