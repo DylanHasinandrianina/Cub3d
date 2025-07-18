@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:49:39 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/16 19:45:38 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:43:24 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(void)
 	malloc_structures(&cub3d);
 	init_mlx(cub3d);
 	setup_hooks(cub3d);
+	mlx_loop_hook(cub3d->mlx->mlx_ptr, render_frame, cub3d);
 	mlx_loop(cub3d->mlx->mlx_ptr);
 	cleanup(cub3d);
 	return (0);

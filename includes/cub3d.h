@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/16 20:26:32 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:43:25 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,16 @@
 typedef struct s_cub3d
 {
 	t_mlx	*mlx;
+	int		ppos_y;
+	int		ppos_x;
+
 }			t_cub3d;
 
 void		init_mlx(t_cub3d *cub3d);
 void		ft_pixel_put(t_img *img, int x, int y, int color);
 void		setup_hooks(t_cub3d *cub3d);
+void		draw_player(t_cub3d *ptr);
+int			render_frame(t_cub3d *ptr);
 
 void		cleanup(t_cub3d *ptr);
 void		error_exit(char *msg, t_cub3d *ptr);

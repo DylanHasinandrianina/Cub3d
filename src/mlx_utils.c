@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:11:51 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/16 19:47:35 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:46:26 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ static int	key_hook(int keycode, t_cub3d *cub3d)
 		cleanup(cub3d);
 		exit(0);
 	}
+	if (keycode == W)
+		cub3d->ppos_y -= PLAYER_SPEED;
+	if (keycode == S)
+		cub3d->ppos_y += PLAYER_SPEED;
+	if (keycode == A)
+		cub3d->ppos_x -= PLAYER_SPEED;
+	if (keycode == D)
+		cub3d->ppos_x += PLAYER_SPEED;
 	return (0);
 }
 
