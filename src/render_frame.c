@@ -1,31 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_init.c                                         :+:      :+:    :+:   */
+/*   render_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 17:12:27 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/18 19:42:19 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/07/19 13:45:31 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/07/19 13:45:55 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	init_mlx(t_cub3d *cub3d)
-{
-	/** init of the mlx structure */
-	cub3d->mlx->mlx_ptr = mlx_init();
-	cub3d->mlx->win_ptr = mlx_new_window(cub3d->mlx->mlx_ptr, SIZE_W, SIZE_H,
-			"Cub3D");
-	cub3d->mlx->img->img = mlx_new_image(cub3d->mlx->mlx_ptr, SIZE_W, SIZE_H);
-	cub3d->mlx->img->addr = mlx_get_data_addr(cub3d->mlx->img->img,
-			&cub3d->mlx->img->bits_per_pixel, &cub3d->mlx->img->line_length,
-			&cub3d->mlx->img->endian);
-	/** init of the player positions */
-	cub3d->ppos_y = SIZE_H / 2;
-	cub3d->ppos_x = SIZE_W / 2;
-}
 
 int	render_frame(t_cub3d *ptr)
 {

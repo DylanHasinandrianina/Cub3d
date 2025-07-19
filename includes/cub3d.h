@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/18 19:43:25 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/19 16:51:39 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,47 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+typedef struct s_mapinfo
+{
+	char		*north_texture_path;
+	char		*south_texture_path;
+	char		*west_texture_path;
+	char		*east_texture_path;
+
+	int			floor_color;
+	int			ceiling_color;
+
+	t_list		*map_lines;
+	int			map_width;
+	int			map_height;
+}				t_mapinfo;
+
 typedef struct s_cub3d
 {
-	t_mlx	*mlx;
-	int		ppos_y;
-	int		ppos_x;
+	t_mlx		*mlx;
 
-}			t_cub3d;
+	double		ppos_y;
+	double		ppos_x;
 
-void		init_mlx(t_cub3d *cub3d);
-void		ft_pixel_put(t_img *img, int x, int y, int color);
-void		setup_hooks(t_cub3d *cub3d);
-void		draw_player(t_cub3d *ptr);
-int			render_frame(t_cub3d *ptr);
+	double		pdir_y;
+	double		pdir_x;
+	double		plane_y;
+	double		plane_x;
 
-void		cleanup(t_cub3d *ptr);
-void		error_exit(char *msg, t_cub3d *ptr);
+	t_mapinfo	*info;
+	int			**map;
+}				t_cub3d;
+
+/** Main functions */
+void			parse_map_file(t_cub3d *ptr);
+void			initialize_game(t_cub3d *cub3d);
+
+void			ft_pixel_put(t_img *img, int x, int y, int color);
+void			setup_hooks(t_cub3d *cub3d);
+void			draw_player(t_cub3d *ptr);
+int				render_frame(t_cub3d *ptr);
+
+void			cleanup(t_cub3d *ptr);
+void			error_exit(char *msg, t_cub3d *ptr);
 
 #endif
