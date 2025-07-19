@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/19 16:58:20 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/19 19:22:40 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void	initialize_game(t_cub3d *cub3d)
 	int		y;
 	int		x;
 
+	line = NULL;
 	cub3d->info->map_width = ft_strlen(cub3d->info->map_lines->content);
 	cub3d->info->map_height = ft_lstsize(cub3d->info->map_lines);
 	cub3d->map = ft_calloc(cub3d->info->map_height, sizeof(int *));
