@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 14:20:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/18 18:50:25 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/20 00:05:45 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 # include "../minilibx-linux/mlx.h"
 
-# define SIZE_W 1024
-# define SIZE_H 512
-# define TITLE_SIZE 30
+# define SIZE_W 1920
+# define SIZE_H 1080
 # define FIELD_OF_VIEW 60
 # define ROTATION_SPEED 0.045
 # define PLAYER_SPEED 4

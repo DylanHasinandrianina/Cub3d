@@ -6,20 +6,46 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:37:28 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/16 21:15:23 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:32:22 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-// In cleanup.c
+static void	free_map_info(t_mapinfo *info)
+{
+	if (!info)
+		return ;
+	free(info->north_texture_path);
+	free(info->south_texture_path);
+	free(info->west_texture_path);
+	free(info->east_texture_path);
+	ft_lstclear(&info->map_lines, free);
+	free(info);
+}
 
-#include "../includes/cub3d.h"
+static void	free_map_grid(t_cub3d *ptr)
+{
+	int	y;
+
+	if (!ptr->map)
+		return ;
+	y = 0;
+	while (y < ptr->info->map_height)
+	{
+		free(ptr->map[y]);
+		y++;
+	}
+	free(ptr->map);
+}
 
 void	error_exit(char *msg, t_cub3d *ptr)
 {
-	ft_putstr_fd("Error: ", 2);
-	ft_putendl_fd(msg, 2);
+	if (msg)
+	{
+		ft_putstr_fd("Error: ", 2);
+		ft_putendl_fd(msg, 2);
+	}
 	cleanup(ptr);
 	exit(1);
 }
@@ -43,5 +69,7 @@ void	cleanup(t_cub3d *ptr)
 			free(ptr->mlx->img);
 		free(ptr->mlx);
 	}
+	free_map_grid(ptr);
+	free_map_info(ptr->info);
 	free(ptr);
 }

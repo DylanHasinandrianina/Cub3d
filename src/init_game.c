@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/19 19:22:40 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:54:48 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	parse_map_file(t_cub3d *cub3d)
 static void	process_player_direction(t_cub3d *cub3d, int x, int y, char *line)
 {
 	cub3d->map[y][x] = 0;
-	cub3d->ppos_x = (x * TITLE_SIZE) + (TITLE_SIZE / 2.0);
-	cub3d->ppos_y = (y * TITLE_SIZE) + (TITLE_SIZE / 2.0);
+	cub3d->ppos_x = (x * cub3d->tile_size) + (cub3d->tile_size / 2.0);
+	cub3d->ppos_y = (y * cub3d->tile_size) + (cub3d->tile_size / 2.0);
 	if (line[x] == 'N')
 	{
 		cub3d->pdir_y = -1;
@@ -78,7 +78,6 @@ static void	process_player_direction(t_cub3d *cub3d, int x, int y, char *line)
 		cub3d->pdir_x = 1;
 		cub3d->plane_y = 0.66;
 	}
-	return ;
 }
 
 static void	iterate_map_lines(t_cub3d *cub3d, char *line, int *x, int *y)
@@ -86,7 +85,7 @@ static void	iterate_map_lines(t_cub3d *cub3d, char *line, int *x, int *y)
 	t_list	*current;
 
 	current = cub3d->info->map_lines;
-	y = 0;
+	*y = 0;
 	while (current)
 	{
 		line = (char *)current->content;
@@ -104,6 +103,7 @@ static void	iterate_map_lines(t_cub3d *cub3d, char *line, int *x, int *y)
 			else
 				cub3d->map[*y][*x] = 0;
 		}
+		current = current->next;
 		(*y)++;
 	}
 	return ;
@@ -126,10 +126,18 @@ void	initialize_game(t_cub3d *cub3d)
 	char	*line;
 	int		y;
 	int		x;
+	int		tile_size_x;
+	int		tile_size_y;
 
 	line = NULL;
 	cub3d->info->map_width = ft_strlen(cub3d->info->map_lines->content);
 	cub3d->info->map_height = ft_lstsize(cub3d->info->map_lines);
+	tile_size_x = (SIZE_W / 2) / cub3d->info->map_width;
+	tile_size_y = SIZE_H / cub3d->info->map_height;
+	if (tile_size_x < tile_size_y)
+		cub3d->tile_size = tile_size_x;
+	else
+		cub3d->tile_size = tile_size_y;
 	cub3d->map = ft_calloc(cub3d->info->map_height, sizeof(int *));
 	if (!cub3d->map)
 		error_exit("malloc cub3d->map, initialize_game()", cub3d);
