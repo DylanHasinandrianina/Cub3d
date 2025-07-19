@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/19 23:54:48 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/20 00:34:47 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	parse_map_file(t_cub3d *cub3d)
 	parse these data from the map and push them to the same *map_lines structure
 	so the rest of the program does not break*/
 	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("111111")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("100101")));
+	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("110101")));
 	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("101001")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("1100N1")));
+	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("1000N1")));
 	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("111111")));
 }
 
