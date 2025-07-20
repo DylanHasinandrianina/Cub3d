@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:45:31 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/20 15:15:41 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/20 17:14:39 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	render_frame(t_cub3d *ptr)
 	draw_background(ptr);
 	draw_map(ptr);
 	draw_player(ptr);
+	// draw_world(ptr); TODO:
 	mlx_put_image_to_window(ptr->mlx->mlx_ptr, ptr->mlx->win_ptr,
 		ptr->mlx->img->img, 0, 0);
 	return (0);

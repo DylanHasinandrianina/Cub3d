@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/20 00:34:47 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/20 17:34:14 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	init_mlx(t_cub3d *cub3d)
 /* This function simulates parsing the file valid_map.cub */
 void	parse_map_file(t_cub3d *cub3d)
 {
-	cub3d->info = calloc(1, sizeof(t_mapinfo)); // TODO: free me
+	cub3d->info = calloc(1, sizeof(t_mapinfo));
 	if (!cub3d->info)
 		error_exit("malloc, parse_map_file()", cub3d);
 	/* TODO: for Dylan
@@ -46,11 +46,14 @@ void	parse_map_file(t_cub3d *cub3d)
 	I am hard coding it an pusing them into the t_list *map_lines. You can
 	parse these data from the map and push them to the same *map_lines structure
 	so the rest of the program does not break*/
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("111111")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("110101")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("101001")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("1000N1")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("111111")));
+	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("11111111")));
+	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("10100001")));
+	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("10100101")));
+	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("100N0101")));
+	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("10010001")));
+	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("10000111")));
+	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("11000001")));
+	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("11111111")));
 }
 
 static void	process_player_direction(t_cub3d *cub3d, int x, int y, char *line)
