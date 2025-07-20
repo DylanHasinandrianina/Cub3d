@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 00:11:21 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/20 00:26:01 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/20 15:44:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	draw_player(t_cub3d *ptr)
 	int		y;
 	double	player_size;
 	int		offsets[2];
+	int		i;
 
 	offsets[0] = 0;
 	offsets[1] = (SIZE_H - (ptr->info->map_height * ptr->tile_size)) / 2;
@@ -79,4 +80,8 @@ void	draw_player(t_cub3d *ptr)
 		}
 		y++;
 	}
+	i = -1;
+	while (++i < ptr->tile_size / 2)
+		ft_pixel_put(ptr->mlx->img, offsets[0] + ptr->ppos_x + ptr->pdir_x * i,
+			offsets[1] + ptr->ppos_y + ptr->pdir_y * i, RED);
 }

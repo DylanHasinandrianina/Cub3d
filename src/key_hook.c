@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 14:57:30 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/20 15:23:27 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/20 15:37:54 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 int	key_hook(int keycode, t_cub3d *cub3d)
 {

@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:13:26 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/20 15:31:39 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/20 15:45:19 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 /** this function otates the player's direction and camera plane vectors.
 rot_speed The rotation angle in radians. A positive value rotates
@@ -34,8 +34,8 @@ static void	rotate_player(t_cub3d *cub3d, double rot_speed)
 /** Handles left and right arrow key presses for player rotation. */
 void	handle_arrow_keys(int keycode, t_cub3d *cub3d)
 {
-	if (keycode == KEY_RIGHT)
-		rotate_player(cub3d, -ROTATION_SPEED);
 	if (keycode == KEY_LEFT)
+		rotate_player(cub3d, -ROTATION_SPEED);
+	if (keycode == KEY_RIGHT)
 		rotate_player(cub3d, ROTATION_SPEED);
 }
