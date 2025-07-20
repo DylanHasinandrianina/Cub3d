@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/20 15:23:37 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/20 19:23:45 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ typedef struct s_cub3d
 	int			**map;
 	int			tile_size;
 
+	double		camera_x;
+	double		raydir_x;
+	double		raydir_y;
+	double		delta_dis_x;
+	double		delta_dis_y;
+	int			map_x;
+	int			map_y;
+
 }				t_cub3d;
 
 /** Main functions */
@@ -69,6 +77,7 @@ void			initialize_game(t_cub3d *cub3d);
 void			draw_player(t_cub3d *ptr);
 void			draw_map(t_cub3d *ptr);
 int				is_wall(t_cub3d *cub3d, int x, int y);
+void			draw_world(t_cub3d *ptr);
 
 void			ft_pixel_put(t_img *img, int x, int y, int color);
 void			setup_hooks(t_cub3d *cub3d);
