@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/22 16:26:23 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:46:20 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	parse_map_file(t_cub3d *cub3d)
 	/* TODO: for Dylan
 	here we should do the procees of opening a file and finding a
 	lines from the valid_map.cub, without using strdup to hardcode a path. */
-	cub3d->info->north_texture_path = ft_strdup("../textures/wall_n.xpm");
-	cub3d->info->south_texture_path = ft_strdup("../textures/wall_s.xpm");
-	cub3d->info->west_texture_path = ft_strdup("../textures/wall_w.xpm");
-	cub3d->info->east_texture_path = ft_strdup("../textures/wall_e.xpm");
+	cub3d->info->north_texture_path = ft_strdup("./textures/wall_n.xpm");
+	cub3d->info->south_texture_path = ft_strdup("./textures/wall_s.xpm");
+	cub3d->info->west_texture_path = ft_strdup("./textures/wall_w.xpm");
+	cub3d->info->east_texture_path = ft_strdup("./textures/wall_e.xpm");
 	/* TODO: for Dylan
 	same goes here, we should access the colors from the file */
 	cub3d->info->floor_color = 0xAAAAAA;

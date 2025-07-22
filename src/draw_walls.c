@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:04:11 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/22 15:47:44 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:49:11 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,39 @@ void	calculate_wall_height(t_cub3d *cub3d)
 /** Draw ceiling, draw the wall slice, draw floor */
 void	draw_slice(t_cub3d *cub3d, int x)
 {
-	int	y;
+	t_texture	*texture;
+	int			y;
+	int			tex_y;
+	int			color;
+	double		step;
+	double		tex_pos;
 
-	y = 0;
-	while (y < cub3d->draw_end)
+	if (cub3d->side == 0 && cub3d->raydir_x < 0)
+		texture = &cub3d->textures[2];
+	else if (cub3d->side == 0 && cub3d->raydir_x >= 0)
+		texture = &cub3d->textures[3];
+	else if (cub3d->side == 1 && cub3d->raydir_y < 0)
+		texture = &cub3d->textures[0];
+	else
+		texture = &cub3d->textures[1];
+	step = 1.0 * texture->height / cub3d->line_height;
+	tex_pos = (cub3d->draw_start - (double)SIZE_H / 2
+			+ (double)cub3d->line_height / 2) * step;
+	y = -1;
+	while (++y < SIZE_H)
 	{
-		ft_pixel_put(cub3d->mlx->img, x, y, cub3d->info->ceiling_color);
-		y++;
-	}
-	while (y < cub3d->draw_end)
-	{
-		if (cub3d->side == 1)
-			ft_pixel_put(cub3d->mlx->img, x, y, RED);
+		if (y < cub3d->draw_start)
+			ft_pixel_put(cub3d->mlx->img, x, y, cub3d->info->ceiling_color);
+		else if (y < cub3d->draw_end)
+		{
+			tex_y = (int)tex_pos % texture->height;
+			tex_pos += step;
+			color = *(unsigned int *)(texture->addr + (tex_y
+						* texture->line_length + cub3d->tex_x
+						* (texture->bits_per_pixel / 8)));
+			ft_pixel_put(cub3d->mlx->img, x, y, color);
+		}
 		else
-			ft_pixel_put(cub3d->mlx->img, x, y, BLUE);
-		y++;
-	}
-	while (y < SIZE_H)
-	{
-		ft_pixel_put(cub3d->mlx->img, x, y, cub3d->info->floor_color);
-		y++;
+			ft_pixel_put(cub3d->mlx->img, x, y, cub3d->info->floor_color);
 	}
 }

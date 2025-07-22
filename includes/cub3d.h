@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/22 16:26:09 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:48:41 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 
 # define PI 3.14159
 # define NUM_TEXTURES 4
+# define TEXTURE_WIDTH 512
+# define TEXTURE_HEIGHT 512
 
 typedef struct s_texture
 {
@@ -96,6 +98,8 @@ typedef struct s_cub3d
 	int			draw_end;
 
 	t_texture	textures[4];
+	double		wall_x;
+	int			tex_x;
 
 }				t_cub3d;
 
@@ -110,12 +114,13 @@ int				is_wall(t_cub3d *cub3d, int x, int y);
 
 /* Raycaster and related functions */
 void			perform_raycaster(t_cub3d *ptr);
-void			draw_slice(t_cub3d *cub3d, int x);
 void			calculate_wall_height(t_cub3d *cub3d);
 void			calculate_textures(t_cub3d *cub3d);
 
 /* Texture functions */
 void			load_textures(t_cub3d *cub3d);
+void			calculate_texture_x(t_cub3d *cub3d);
+void			draw_slice(t_cub3d *cub3d, int x);
 
 void			ft_pixel_put(t_img *img, int x, int y, int color);
 void			setup_hooks(t_cub3d *cub3d);
