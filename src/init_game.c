@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/22 16:02:29 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:26:23 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,4 +139,5 @@ void	initialize_game(t_cub3d *cub3d)
 		error_exit("malloc cub3d->map, initialize_game()", cub3d);
 	iterate_map_lines(cub3d, line, &x, &y);
 	init_mlx(cub3d);
+	load_textures(cub3d);
 }

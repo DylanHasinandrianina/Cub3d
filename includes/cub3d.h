@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/22 15:55:58 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:26:09 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,19 @@
 # include <stdlib.h>
 
 # define PI 3.14159
-# define NUMBER_TEXTURES 4
+# define NUM_TEXTURES 4
+
+typedef struct s_texture
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	int			width;
+	int			height;
+
+}				t_texture;
 
 typedef struct s_mapinfo
 {
@@ -83,6 +95,8 @@ typedef struct s_cub3d
 	int			draw_start;
 	int			draw_end;
 
+	t_texture	textures[4];
+
 }				t_cub3d;
 
 /** Main functions */
@@ -99,6 +113,9 @@ void			perform_raycaster(t_cub3d *ptr);
 void			draw_slice(t_cub3d *cub3d, int x);
 void			calculate_wall_height(t_cub3d *cub3d);
 void			calculate_textures(t_cub3d *cub3d);
+
+/* Texture functions */
+void			load_textures(t_cub3d *cub3d);
 
 void			ft_pixel_put(t_img *img, int x, int y, int color);
 void			setup_hooks(t_cub3d *cub3d);
