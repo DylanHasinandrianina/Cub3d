@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 00:11:21 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/20 17:05:45 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:08:44 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static void	draw_cell(t_cub3d *ptr, int x, int y, int color)
 	int	offset_x;
 	int	offset_y;
 
-	offset_x = 0;
-	offset_y = (SIZE_H - (ptr->info->map_height * ptr->tile_size)) / 2;
+	offset_x = 20;
+	offset_y = 20;
 	margin = 1;
 	tile_y = y * ptr->tile_size + margin - 1;
 	while (++tile_y < (y * ptr->tile_size) + ptr->tile_size - margin)
@@ -58,30 +58,46 @@ void	draw_map(t_cub3d *ptr)
 	}
 }
 
-void	draw_player(t_cub3d *ptr)
+static void	draw_player_square(t_cub3d *ptr, double player_size, int offset_x,
+		int offset_y)
 {
-	int		x;
-	int		y;
-	double	player_size;
-	int		offsets[2];
-	int		i;
+	int	x;
+	int	y;
 
-	offsets[0] = 0;
-	offsets[1] = (SIZE_H - (ptr->info->map_height * ptr->tile_size)) / 2;
-	player_size = ptr->tile_size / 15.0;
 	y = ptr->ppos_y - (player_size / 2);
 	while (y < ptr->ppos_y + (player_size / 2))
 	{
 		x = ptr->ppos_x - (player_size / 2);
 		while (x < ptr->ppos_x + (player_size / 2))
 		{
-			ft_pixel_put(ptr->mlx->img, offsets[0] + x, offsets[1] + y, GREEN);
+			ft_pixel_put(ptr->mlx->img, offset_x + x, offset_y + y, GREEN);
 			x++;
 		}
 		y++;
 	}
+}
+
+static void	draw_player_direction(t_cub3d *ptr, int offset_x, int offset_y)
+{
+	int	i;
+
 	i = -1;
 	while (++i < ptr->tile_size / 2)
-		ft_pixel_put(ptr->mlx->img, offsets[0] + ptr->ppos_x + ptr->pdir_x * i,
-			offsets[1] + ptr->ppos_y + ptr->pdir_y * i, GREEN);
+	{
+		ft_pixel_put(ptr->mlx->img, offset_x + ptr->ppos_x + ptr->pdir_x * i,
+			offset_y + ptr->ppos_y + ptr->pdir_y * i, GREEN);
+	}
+}
+
+void	draw_player(t_cub3d *ptr)
+{
+	double	player_size;
+	int		offset_x;
+	int		offset_y;
+
+	offset_x = 20;
+	offset_y = 20;
+	player_size = ptr->tile_size / 15.0;
+	draw_player_square(ptr, player_size, offset_x, offset_y);
+	draw_player_direction(ptr, offset_x, offset_y);
 }

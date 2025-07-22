@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 18:26:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/22 15:49:25 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:52:16 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,7 @@ void	perform_raycaster(t_cub3d *ptr)
 		calculate_step_and_side_distance(ptr);
 		dda(ptr);
 		calculate_wall_height(ptr);
+		calculate_textures(ptr);
 		draw_slice(ptr, x);
 	}
 	return ;

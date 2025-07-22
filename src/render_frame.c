@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:45:31 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/22 12:31:51 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:59:16 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,11 @@ int	is_wall(t_cub3d *cub3d, int x, int y)
 	return (cub3d->map[map_y][map_x] == 1);
 }
 
-static void	draw_background(t_cub3d *ptr)
-{
-	int	y;
-	int	x;
-
-	y = -1;
-	while (++y < SIZE_H)
-	{
-		x = -1;
-		while (++x < SIZE_W / 2)
-			ft_pixel_put(ptr->mlx->img, x, y, 0x222222);
-		while (x < SIZE_W)
-		{
-			ft_pixel_put(ptr->mlx->img, x, y, GRAY);
-			x++;
-		}
-	}
-}
-
 int	render_frame(t_cub3d *ptr)
 {
-	draw_background(ptr);
+	perform_raycaster(ptr);
 	draw_map(ptr);
 	draw_player(ptr);
-	perform_raycaster(ptr);
 	mlx_put_image_to_window(ptr->mlx->mlx_ptr, ptr->mlx->win_ptr,
 		ptr->mlx->img->img, 0, 0);
 	return (0);

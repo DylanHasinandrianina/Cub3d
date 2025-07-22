@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/22 15:47:44 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:55:58 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <stdlib.h>
 
 # define PI 3.14159
+# define NUMBER_TEXTURES 4
 
 typedef struct s_mapinfo
 {
@@ -97,6 +98,7 @@ int				is_wall(t_cub3d *cub3d, int x, int y);
 void			perform_raycaster(t_cub3d *ptr);
 void			draw_slice(t_cub3d *cub3d, int x);
 void			calculate_wall_height(t_cub3d *cub3d);
+void			calculate_textures(t_cub3d *cub3d);
 
 void			ft_pixel_put(t_img *img, int x, int y, int color);
 void			setup_hooks(t_cub3d *cub3d);
