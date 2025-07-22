@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/22 16:48:41 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:56:49 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../libft/includes/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "err.h"
-# include "minimap.h"
 # include "mlx_utils.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
