@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/22 16:56:49 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/24 13:58:43 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@
 # define NUM_TEXTURES 4
 # define TEXTURE_WIDTH 512
 # define TEXTURE_HEIGHT 512
+
+typedef struct s_color_elem
+{
+	int			r;
+	int			g;
+	int			b;
+}				t_color_elem;
 
 typedef struct s_texture
 {
@@ -102,8 +109,41 @@ typedef struct s_cub3d
 
 }				t_cub3d;
 
+/***************parsing functions**************/
+/*utils functions*/
+int				is_empty_line(char *s);
+int				is_texture_or_color_line(char *line);
+int				is_map_elem(char *line);
+int				is_player(char c);
+int				convert_rgb_to_int(int r, int g, int b);
+int				ft_atoi_strict(char *str, int *out);
+int				skip_spaces(char *str, int i);
+void			free_split(char **split);
+void			free_partial_lines(char **content, int i);
+char			**list_to_array(t_list *lst);
+
+/*map functions*/
+t_list			*get_map(char **file);
+char			**normalize_map(char **map);
+
+/*all checks*/
+int				check_file(int ac, char **av);
+int				check_element_validity(char **file);
+int				check_missing_element(char **file);
+int				check_map_position(char **file);
+int				check_duplicate_elements(char **file);
+int				check_texture_path(char **file, t_mapinfo *info);
+int				check_color_validity(char **file, t_mapinfo *info);
+int				check_map_validity(char **file, t_mapinfo *info);
+int				check_error(char **file, t_mapinfo *info);
+
+/*the parsing function*/
+int				parsing(int ac, char **av, t_mapinfo *info);
+
+/********************************************************************/
+
 /** Main functions */
-void			parse_map_file(t_cub3d *ptr);
+void			parse_map_file(int ac, char **av, t_cub3d *cub3d);
 void			initialize_game(t_cub3d *cub3d);
 
 /* Drawing functions */

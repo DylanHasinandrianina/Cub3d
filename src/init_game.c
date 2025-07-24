@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/22 16:46:20 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/24 15:03:36 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,13 @@ static void	init_mlx(t_cub3d *cub3d)
 			&cub3d->mlx->img->endian);
 }
 
-/* This function simulates parsing the file valid_map.cub */
-void	parse_map_file(t_cub3d *cub3d)
+void	parse_map_file(int ac, char **av, t_cub3d *cub3d)
 {
 	cub3d->info = calloc(1, sizeof(t_mapinfo));
 	if (!cub3d->info)
 		error_exit("malloc, parse_map_file()", cub3d);
-	/* TODO: for Dylan
-	here we should do the procees of opening a file and finding a
-	lines from the valid_map.cub, without using strdup to hardcode a path. */
-	cub3d->info->north_texture_path = ft_strdup("./textures/wall_n.xpm");
-	cub3d->info->south_texture_path = ft_strdup("./textures/wall_s.xpm");
-	cub3d->info->west_texture_path = ft_strdup("./textures/wall_w.xpm");
-	cub3d->info->east_texture_path = ft_strdup("./textures/wall_e.xpm");
-	/* TODO: for Dylan
-	same goes here, we should access the colors from the file */
-	cub3d->info->floor_color = 0xAAAAAA;
-	cub3d->info->ceiling_color = 0x555555;
-	cub3d->info->map_lines = NULL;
-	/* TODO: for Dylan
-	here we should access these map data from the file as well, for the moment
-	I am hard coding it an pusing them into the t_list *map_lines. You can
-	parse these data from the map and push them to the same *map_lines structure
-	so the rest of the program does not break*/
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("11111111")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("10100001")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("10100101")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("100N0101")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("10010001")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("10000111")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("11000001")));
-	ft_lstadd_back(&cub3d->info->map_lines, ft_lstnew(ft_strdup("11111111")));
+	if (!parsing(ac, av, cub3d->info))
+		error_exit(NULL, cub3d);
 }
 
 static void	process_player_direction(t_cub3d *cub3d, int x, int y, char *line)
@@ -86,22 +62,23 @@ static void	process_player_direction(t_cub3d *cub3d, int x, int y, char *line)
 static void	iterate_map_lines(t_cub3d *cub3d, char *line, int *x, int *y)
 {
 	t_list	*current;
+	size_t	len;
 
 	current = cub3d->info->map_lines;
 	*y = 0;
 	while (current)
 	{
 		line = (char *)current->content;
+		len = ft_strlen(line);
 		cub3d->map[*y] = calloc(cub3d->info->map_width, sizeof(int));
 		if (!cub3d->map[*y])
 			error_exit("malloc, initialize_game()", cub3d);
 		*x = -1;
 		while (++(*x) < cub3d->info->map_width)
 		{
-			if (ft_isdigit(line[*x]))
+			if (*x < (int)len && ft_isdigit(line[*x]))
 				cub3d->map[*y][*x] = line[*x] - '0';
-			else if (line[*x] == 'N' || line[*x] == 'S' || line[*x] == 'W'
-				|| line[*x] == 'E')
+			else if (*x < (int)len && is_player(line[*x]))
 				process_player_direction(cub3d, *x, *y, line);
 			else
 				cub3d->map[*y][*x] = 0;
@@ -109,7 +86,6 @@ static void	iterate_map_lines(t_cub3d *cub3d, char *line, int *x, int *y)
 		current = current->next;
 		(*y)++;
 	}
-	return ;
 }
 
 /* This function takes the raw data from the t_mapinfo structure that Dylan will

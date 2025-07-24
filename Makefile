@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mgodawat <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/08 13:47:20 by mgodawat          #+#    #+#              #
-#    Updated: 2025/07/11 19:03:02 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/07/24 10:05:52 by shasinan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ $(MLX_A): $(MLX_DIR)
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(MLX_DIR)
 	@echo "⚙️  Compiling $<..."
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) -g $(CFLAGS) -c $< -o $@
 
 # NEW: Rule to clone MiniLibX if the directory doesn't exist.
 $(MLX_DIR):

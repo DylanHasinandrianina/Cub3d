@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:37:28 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/19 23:32:22 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/24 13:50:17 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	free_map_info(t_mapinfo *info)
 {
 	if (!info)
 		return ;
-	free(info->north_texture_path);
+	free(info->north_texture_path);	
 	free(info->south_texture_path);
 	free(info->west_texture_path);
 	free(info->east_texture_path);
