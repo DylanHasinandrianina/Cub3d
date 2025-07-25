@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 18:26:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 14:42:42 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:51:29 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ static void	calculate_ray_directions(t_cub3d *cub3d, int x)
 	cub3d->raydir_y = cub3d->pdir_y + cub3d->plane_y * cub3d->camera_x;
 	return ;
 }
+
 /**
 Raycasting is a method that we use to fake a 3d world in a 2d map.
 

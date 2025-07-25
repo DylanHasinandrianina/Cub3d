@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:12:32 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 14:42:45 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:51:50 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	keycode_d(double *new_x, double *new_y, int move_speed,
 	*new_x += cub3d->plane_x * move_speed;
 	*new_y += cub3d->plane_y * move_speed;
 }
+
 static void	keycode_a(double *new_x, double *new_y, int move_speed,
 		t_cub3d *cub3d)
 {

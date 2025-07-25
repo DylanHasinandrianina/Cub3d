@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:49:39 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/24 10:24:08 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:43:21 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,13 @@ int	main(int ac, char **av)
 {
 	t_cub3d	*cub3d;
 
-	/** 1. Allocate mem for the main structure */
 	cub3d = NULL;
 	malloc_structures(&cub3d);
-	/** 2. Parse the map file */
 	parse_map_file(ac, av, cub3d);
-	/** 3. Init the game stage from the parsed data */
 	initialize_game(cub3d);
-	/** 4. Run the game */
 	setup_hooks(cub3d);
 	mlx_loop_hook(cub3d->mlx->mlx_ptr, render_frame, cub3d);
 	mlx_loop(cub3d->mlx->mlx_ptr);
-	/** 5. Clean memory */
 	cleanup(cub3d);
 	return (0);
 }
