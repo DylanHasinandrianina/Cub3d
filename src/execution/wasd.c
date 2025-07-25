@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:12:32 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 13:45:03 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:42:45 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	keycode_w(double *new_x, double *new_y, int move_speed,
 		t_cub3d *cub3d)

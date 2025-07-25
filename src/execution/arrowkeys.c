@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:13:26 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/20 15:45:19 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:41:06 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 /** this function otates the player's direction and camera plane vectors.
 rot_speed The rotation angle in radians. A positive value rotates

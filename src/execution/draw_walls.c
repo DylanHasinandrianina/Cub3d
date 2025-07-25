@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:04:11 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 13:42:01 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:41:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	draw_minimap_background(t_cub3d *ptr)
 {

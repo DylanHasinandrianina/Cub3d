@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:19:40 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/22 16:45:09 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:42:42 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	calculate_texture_x(t_cub3d *cub3d)
 {

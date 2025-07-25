@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 00:11:21 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/22 16:08:44 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:41:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 /** Draws a single cell of the map with a margin to create a grid effect.
 The color to draw the cell (e.g., BLACK for walls, WHITE for floor). */

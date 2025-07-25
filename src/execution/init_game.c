@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 13:33:37 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:41:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	init_mlx(t_cub3d *cub3d)
 {

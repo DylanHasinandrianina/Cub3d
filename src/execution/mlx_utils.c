@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 00:20:10 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 14:38:05 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:41:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	ft_pixel_put(t_img *img, int x, int y, int color)
 {

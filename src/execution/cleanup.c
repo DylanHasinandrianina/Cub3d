@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:37:28 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 14:22:42 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:41:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	free_textures(t_cub3d *cub3d)
 {
