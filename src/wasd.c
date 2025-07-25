@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:12:32 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/20 15:37:56 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:45:03 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	handle_wasd(int keycode, t_cub3d *cub3d)
 	double	new_y;
 	double	move_speed;
 
-	move_speed = PLAYER_SPEED * 2.5;
+	move_speed = PLAYER_SPEED * 1.5;
 	new_x = cub3d->ppos_x;
 	new_y = cub3d->ppos_y;
 	if (keycode == W)

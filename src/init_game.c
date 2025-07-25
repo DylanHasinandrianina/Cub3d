@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/24 15:03:36 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:33:37 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,18 @@ void	initialize_game(t_cub3d *cub3d)
 	char	*line;
 	int		y;
 	int		x;
+	double	tile_w;
+	double	tile_h;
 
 	line = NULL;
 	cub3d->info->map_width = ft_strlen(cub3d->info->map_lines->content);
 	cub3d->info->map_height = ft_lstsize(cub3d->info->map_lines);
-	cub3d->tile_size = 40;
+	tile_w = (SIZE_W / MINIMAP_SCALE_FACTOR) / cub3d->info->map_width;
+	tile_h = (SIZE_H / MINIMAP_SCALE_FACTOR) / cub3d->info->map_height;
+	if (tile_w < tile_h)
+		cub3d->tile_size = tile_w;
+	else
+		cub3d->tile_size = tile_h;
 	cub3d->map = ft_calloc(cub3d->info->map_height, sizeof(int *));
 	if (!cub3d->map)
 		error_exit("malloc cub3d->map, initialize_game()", cub3d);

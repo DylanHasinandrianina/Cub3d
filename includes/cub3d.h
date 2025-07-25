@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/24 13:58:43 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:43:46 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@
 
 # define PI 3.14159
 # define NUM_TEXTURES 4
-# define TEXTURE_WIDTH 512
-# define TEXTURE_HEIGHT 512
+# define TEXTURE_WIDTH 1024
+# define TEXTURE_HEIGHT 1024
+# define MINIMAP_SCALE_FACTOR 2.0
 
 typedef struct s_color_elem
 {
@@ -147,6 +148,7 @@ void			parse_map_file(int ac, char **av, t_cub3d *cub3d);
 void			initialize_game(t_cub3d *cub3d);
 
 /* Drawing functions */
+void			draw_minimap_background(t_cub3d *ptr);
 void			draw_player(t_cub3d *ptr);
 void			draw_map(t_cub3d *ptr);
 int				is_wall(t_cub3d *cub3d, int x, int y);

@@ -6,11 +6,33 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:04:11 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/22 16:49:11 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:42:01 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	draw_minimap_background(t_cub3d *ptr)
+{
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+	int	offset_x;
+	int	offset_y;
+
+	offset_x = 20;
+	offset_y = 20;
+	width = ptr->info->map_width * ptr->tile_size;
+	height = ptr->info->map_height * ptr->tile_size;
+	y = -1;
+	while (++y < height)
+	{
+		x = -1;
+		while (++x < width)
+			ft_pixel_put(ptr->mlx->img, offset_x + x, offset_y + y, 0x80000000);
+	}
+}
 
 /* Calculate distance projected on camera direction (Euclidean distance would
 give fisheye effect!)

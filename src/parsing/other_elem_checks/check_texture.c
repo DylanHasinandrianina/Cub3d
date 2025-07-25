@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 14:51:07 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/24 14:51:17 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:26:49 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static int	assign_texture(t_mapinfo *info, int id, char *path)
 {

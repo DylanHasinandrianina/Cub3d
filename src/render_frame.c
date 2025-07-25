@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:45:31 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/22 15:59:16 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:42:40 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	is_wall(t_cub3d *cub3d, int x, int y)
 int	render_frame(t_cub3d *ptr)
 {
 	perform_raycaster(ptr);
+	draw_minimap_background(ptr);
 	draw_map(ptr);
 	draw_player(ptr);
 	mlx_put_image_to_window(ptr->mlx->mlx_ptr, ptr->mlx->win_ptr,

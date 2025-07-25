@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   other_elem_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 18:31:11 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/24 14:00:23 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:26:52 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../../includes/cub3d.h"
 
 int	convert_rgb_to_int(int r, int g, int b)
 {
