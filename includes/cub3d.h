@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/25 14:52:14 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:41:56 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,6 @@ int				is_wall(t_cub3d *cub3d, int x, int y);
 /* Raycaster and related functions */
 void			perform_raycaster(t_cub3d *ptr);
 void			calculate_wall_height(t_cub3d *cub3d);
-void			calculate_textures(t_cub3d *cub3d);
 
 /* Texture functions */
 void			load_textures(t_cub3d *cub3d);
