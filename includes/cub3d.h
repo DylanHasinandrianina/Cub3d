@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/25 13:43:46 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:38:05 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ typedef struct s_cub3d
 	double		wall_x;
 	int			tex_x;
 
+	int			keys[65536];
+
 }				t_cub3d;
 
 /***************parsing functions**************/
@@ -171,6 +173,7 @@ int				render_frame(t_cub3d *ptr);
 int				key_hook(int keycode, t_cub3d *cub3d);
 void			handle_wasd(int keycode, t_cub3d *cub3d);
 void			handle_arrow_keys(int keycode, t_cub3d *cub3d);
+
 
 void			cleanup(t_cub3d *ptr);
 void			error_exit(char *msg, t_cub3d *ptr);

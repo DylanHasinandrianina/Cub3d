@@ -3,20 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:37:28 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/24 13:50:17 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:22:42 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+static void	free_textures(t_cub3d *cub3d)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+	{
+		if (cub3d->textures[i].img)
+			mlx_destroy_image(cub3d->mlx->mlx_ptr, cub3d->textures[i].img);
+	}
+}
+
 static void	free_map_info(t_mapinfo *info)
 {
 	if (!info)
 		return ;
-	free(info->north_texture_path);	
+	free(info->north_texture_path);
 	free(info->south_texture_path);
 	free(info->west_texture_path);
 	free(info->east_texture_path);
@@ -60,6 +72,7 @@ void	cleanup(t_cub3d *ptr)
 		{
 			if (ptr->mlx->img && ptr->mlx->img->img)
 				mlx_destroy_image(ptr->mlx->mlx_ptr, ptr->mlx->img->img);
+			free_textures(ptr);
 			if (ptr->mlx->win_ptr)
 				mlx_destroy_window(ptr->mlx->mlx_ptr, ptr->mlx->win_ptr);
 			mlx_destroy_display(ptr->mlx->mlx_ptr);
