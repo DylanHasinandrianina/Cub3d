@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 17:22:16 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/25 13:27:14 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/26 11:30:49 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static int	is_map_closed(char **map)
 			if (map[y][x] == '0' || is_player(map[y][x]))
 			{
 				if (y == 0 || x == 0 || !map[y + 1] || !map[y][x + 1])
-					return (0);
+					return (ft_putstr_fd("Error\nunclosed map\n", 2), 0);
 				if (map[y + 1][x] == ' ' || map[y - 1][x] == ' ' || map[y][x
 					+ 1] == ' ' || map[y][x - 1] == ' ')
-					return (0);
+					return (ft_putstr_fd("Error\nunclosed map\n", 2), 0);
 			}
 			x++;
 		}
@@ -111,8 +111,7 @@ int	check_map_validity(char **file, t_mapinfo *info)
 	if (!map)
 		return (free_split(array), 1);
 	if (is_map_closed(map) == 0)
-		return (ft_putstr_fd("Error\nmap not closed\n", 2), free_split(map),
-			free_split(array), 1);
+		return (free_split(map), free_split(array), 1);
 	if (is_one_player(map) == 0)
 	{
 		ft_putstr_fd("Error\nmissing or more than one player\n", 2);
