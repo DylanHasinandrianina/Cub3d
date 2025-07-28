@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:49:39 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 14:43:21 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:55:47 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	malloc_structures(t_cub3d **cub3d)
 {
-	*cub3d = calloc(1, sizeof(t_cub3d));
+	*cub3d = ft_calloc(1, sizeof(t_cub3d));
 	if (!*cub3d)
 		error_exit("init_structures(), cub3d malloc", *cub3d);
-	(*cub3d)->mlx = calloc(1, sizeof(t_mlx));
+	(*cub3d)->mlx = ft_calloc(1, sizeof(t_mlx));
 	if (!(*cub3d)->mlx)
 		error_exit("init_structures(), cub3d->mlx malloc", *cub3d);
-	(*cub3d)->mlx->img = calloc(1, sizeof(t_img));
+	(*cub3d)->mlx->img = ft_calloc(1, sizeof(t_img));
 	if (!(*cub3d)->mlx->img)
 		error_exit("init_structures(), cub3d->mlx->img malloc", *cub3d);
 }

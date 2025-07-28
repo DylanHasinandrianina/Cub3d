@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:19:40 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 14:42:42 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:56:38 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	calculate_texture_x(t_cub3d *cub3d)
 
 static void	load_single_texture(t_cub3d *cub3d, t_texture *texture, char *path)
 {
-	printf("DEBUG: attempting to load texture from %s\n", path);
 	texture->img = mlx_xpm_file_to_image(cub3d->mlx->mlx_ptr, path,
 			&texture->width, &texture->height);
 	if (!texture->img)

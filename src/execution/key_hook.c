@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 14:57:30 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 14:41:59 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:57:34 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	key_hook(int keycode, t_cub3d *cub3d)
 {
 	if (keycode == KEY_ESC)
-		error_exit("Closing game.", cub3d);
+		error_exit(NULL, cub3d);
 	handle_wasd(keycode, cub3d);
 	handle_arrow_keys(keycode, cub3d);
 	return (0);

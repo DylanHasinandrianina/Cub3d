@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/28 15:51:17 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:55:47 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	init_mlx(t_cub3d *cub3d)
 
 void	parse_map_file(int ac, char **av, t_cub3d *cub3d)
 {
-	cub3d->info = calloc(1, sizeof(t_mapinfo));
+	cub3d->info = ft_calloc(1, sizeof(t_mapinfo));
 	if (!cub3d->info)
 		error_exit("malloc, parse_map_file()", cub3d);
 	if (!parsing(ac, av, cub3d->info))
@@ -70,7 +70,7 @@ static void	iterate_map_lines(t_cub3d *cub3d, char *line, int *x, int *y)
 	{
 		line = (char *)current->content;
 		len = ft_strlen(line);
-		cub3d->map[*y] = calloc(cub3d->info->map_width, sizeof(int));
+		cub3d->map[*y] = ft_calloc(cub3d->info->map_width, sizeof(int));
 		if (!cub3d->map[*y])
 			error_exit("malloc, initialize_game()", cub3d);
 		*x = -1;
