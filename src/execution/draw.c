@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 00:11:21 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 14:41:59 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:43:46 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	draw_map(t_cub3d *ptr)
 			if (ptr->map[y][x] == 1)
 				draw_cell(ptr, x, y, BLACK);
 			else
-				draw_cell(ptr, x, y, WHITE);
+				draw_cell(ptr, x, y, 0x7c0414);
 		}
 	}
 }
@@ -70,7 +70,7 @@ static void	draw_player_square(t_cub3d *ptr, double player_size, int offset_x,
 		x = ptr->ppos_x - (player_size / 2);
 		while (x < ptr->ppos_x + (player_size / 2))
 		{
-			ft_pixel_put(ptr->mlx->img, offset_x + x, offset_y + y, GREEN);
+			ft_pixel_put(ptr->mlx->img, offset_x + x, offset_y + y, YELLOW);
 			x++;
 		}
 		y++;
@@ -85,7 +85,7 @@ static void	draw_player_direction(t_cub3d *ptr, int offset_x, int offset_y)
 	while (++i < ptr->tile_size / 2)
 	{
 		ft_pixel_put(ptr->mlx->img, offset_x + ptr->ppos_x + ptr->pdir_x * i,
-			offset_y + ptr->ppos_y + ptr->pdir_y * i, GREEN);
+			offset_y + ptr->ppos_y + ptr->pdir_y * i, YELLOW);
 	}
 }
 
@@ -97,7 +97,7 @@ void	draw_player(t_cub3d *ptr)
 
 	offset_x = 20;
 	offset_y = 20;
-	player_size = ptr->tile_size / 15.0;
+	player_size = ptr->tile_size / 3.0;
 	draw_player_square(ptr, player_size, offset_x, offset_y);
 	draw_player_direction(ptr, offset_x, offset_y);
 }

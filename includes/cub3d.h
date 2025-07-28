@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/25 16:41:56 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:44:47 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 
 # define PI 3.14159
 # define NUM_TEXTURES 4
-# define TEXTURE_WIDTH 1024
-# define TEXTURE_HEIGHT 1024
-# define MINIMAP_SCALE_FACTOR 2.0
+# define TEXTURE_WIDTH 128
+# define TEXTURE_HEIGHT 64
+# define MINIMAP_SCALE_FACTOR 5.0
 
 typedef struct s_color_elem
 {
