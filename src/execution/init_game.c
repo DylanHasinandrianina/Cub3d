@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 14:41:59 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:51:17 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	initialize_game(t_cub3d *cub3d)
 	double	tile_h;
 
 	line = NULL;
-	cub3d->info->map_width = ft_strlen(cub3d->info->map_lines->content);
+	cub3d->info->map_width = get_max_width(cub3d->info->map_lines);
 	cub3d->info->map_height = ft_lstsize(cub3d->info->map_lines);
 	tile_w = (SIZE_W / MINIMAP_SCALE_FACTOR) / cub3d->info->map_width;
 	tile_h = (SIZE_H / MINIMAP_SCALE_FACTOR) / cub3d->info->map_height;

@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/28 15:44:47 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:51:36 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ char			**list_to_array(t_list *lst);
 /*map functions*/
 t_list			*get_map(char **file);
 char			**normalize_map(char **map);
+int				get_max_width(t_list *map_lines);
 
 /*all checks*/
 int				check_file(int ac, char **av);
