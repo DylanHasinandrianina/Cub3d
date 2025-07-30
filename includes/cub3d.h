@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/28 15:51:36 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:42:26 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,17 @@
 # define TEXTURE_WIDTH 128
 # define TEXTURE_HEIGHT 64
 # define MINIMAP_SCALE_FACTOR 5.0
+
+typedef enum e_identifier
+{
+	ID_ERROR,
+	ID_NORTH,
+	ID_SOUTH,
+	ID_WEST,
+	ID_EAST,
+	ID_FLOOR,
+	ID_CEILING
+}				t_identifier;
 
 typedef struct s_color_elem
 {
@@ -115,7 +126,7 @@ typedef struct s_cub3d
 /***************parsing functions**************/
 /*utils functions*/
 int				is_empty_line(char *s);
-int				is_texture_or_color_line(char *line);
+t_identifier	is_texture_or_color_line(char *line);
 int				is_map_elem(char *line);
 int				is_player(char c);
 int				convert_rgb_to_int(int r, int g, int b);
