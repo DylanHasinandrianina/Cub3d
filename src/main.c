@@ -6,12 +6,14 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:49:39 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/28 15:55:47 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:24:57 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+/* valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
+--suppressions=mlx.supp ./cub3d ./maps/valid_map.cub */
 static void	malloc_structures(t_cub3d **cub3d)
 {
 	*cub3d = ft_calloc(1, sizeof(t_cub3d));

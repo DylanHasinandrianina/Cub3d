@@ -5,40 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 14:51:07 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/25 13:26:49 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/07/30 15:42:55 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/07/30 15:43:11 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-static int	assign_texture(t_mapinfo *info, int id, char *path)
+static int	assign_texture(t_mapinfo *info, t_identifier id, char *path)
 {
-	if (id == 1)
-		info->north_texture_path = ft_strdup(path);
-	else if (id == 2)
-		info->south_texture_path = ft_strdup(path);
-	else if (id == 3)
-		info->west_texture_path = ft_strdup(path);
-	else if (id == 4)
-		info->east_texture_path = ft_strdup(path);
-	free(path);
-	if ((id == 1 && !info->north_texture_path) || (id == 2
-			&& !info->south_texture_path) || (id == 3
-			&& !info->west_texture_path) || (id == 4
-			&& !info->east_texture_path))
+	if (id == ID_NORTH)
+		info->north_texture_path = path;
+	else if (id == ID_SOUTH)
+		info->south_texture_path = path;
+	else if (id == ID_WEST)
+		info->west_texture_path = path;
+	else if (id == ID_EAST)
+		info->east_texture_path = path;
+	else
+	{
+		free(path);
 		return (0);
+	}
 	return (1);
 }
 
-static int	check_texture_line_validity(char **split, int id, t_mapinfo *info)
+static int	validate_and_assign_path(char *line, t_identifier id,
+		t_mapinfo *info)
 {
+	int		i;
 	int		fd;
 	char	*path;
 
-	if (!split[1] || !ft_strcmp(split[1], "\n") || split[2])
-		return (ft_putstr_fd("Error\nTexture must have 2 tokens\n", 2), 0);
-	path = ft_strtrim(split[1], " \t\r\n");
+	i = 0;
+	while (line[i] && !ft_isspace(line[i]))
+		i++;
+	while (line[i] && ft_isspace(line[i]))
+		i++;
+	if (line[i] == '\0')
+		return (ft_putstr_fd("Error\nMissing texture path\n", 2), 0);
+	path = ft_strtrim(&line[i], " \t\r\n");
 	if (!path)
 		return (0);
 	fd = open(path, O_RDONLY);
@@ -54,23 +60,21 @@ static int	check_texture_line_validity(char **split, int id, t_mapinfo *info)
 
 int	check_texture_path(char **file, t_mapinfo *info)
 {
-	int		i;
-	char	**split;
-	int		id;
+	int				i;
+	t_identifier	id;
+	int				j;
 
 	i = 0;
 	while (file[i])
 	{
-		if (!is_empty_line(file[i]))
+		id = is_texture_or_color_line(file[i]);
+		if (id >= ID_NORTH && id <= ID_EAST)
 		{
-			id = is_texture_or_color_line(file[i]);
-			if (id > 0 && id < 5)
-			{
-				split = ft_split(file[i], ' ');
-				if (!split || !check_texture_line_validity(split, id, info))
-					return (free_split(split), 1);
-				free_split(split);
-			}
+			j = 0;
+			while (ft_isspace(file[i][j]))
+				j++;
+			if (!validate_and_assign_path(&file[i][j], id, info))
+				return (1);
 		}
 		i++;
 	}

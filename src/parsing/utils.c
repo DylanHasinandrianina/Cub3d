@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/15 13:45:45 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/25 13:26:00 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/07/30 15:41:59 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/07/30 15:42:34 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	is_empty_line(char *s)
 	return (1);
 }
 
-int	is_texture_or_color_line(char *line)
+t_identifier	is_texture_or_color_line(char *line)
 {
 	int	i;
 
@@ -34,18 +34,18 @@ int	is_texture_or_color_line(char *line)
 	while (ft_isspace(line[i]))
 		i++;
 	if (!ft_strncmp(&line[i], "NO", 2) && ft_isspace(line[i + 2]))
-		return (1);
+		return (ID_NORTH);
 	else if (!ft_strncmp(&line[i], "SO", 2) && ft_isspace(line[i + 2]))
-		return (2);
+		return (ID_SOUTH);
 	else if (!ft_strncmp(&line[i], "WE", 2) && ft_isspace(line[i + 2]))
-		return (3);
+		return (ID_WEST);
 	else if (!ft_strncmp(&line[i], "EA", 2) && ft_isspace(line[i + 2]))
-		return (4);
+		return (ID_EAST);
 	else if (line[i] == 'F' && ft_isspace(line[i + 1]))
-		return (5);
+		return (ID_FLOOR);
 	else if ((line[i] == 'C') && ft_isspace(line[i + 1]))
-		return (6);
-	return (0);
+		return (ID_CEILING);
+	return (ID_ERROR);
 }
 
 int	is_map_elem(char *line)
