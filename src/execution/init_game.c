@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/08/05 13:36:25 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/08/05 13:46:27 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,9 @@ node, to find the y we can get the linked list size
 
 void	initialize_game(t_cub3d *cub3d)
 {
-	char	*line;
 	double	tile_w;
 	double	tile_h;
 
-	line = NULL;
 	cub3d->info->map_width = get_max_width(cub3d->info->map_lines);
 	cub3d->info->map_height = ft_lstsize(cub3d->info->map_lines);
 	tile_w = (SIZE_W / MINIMAP_SCALE_FACTOR) / cub3d->info->map_width;

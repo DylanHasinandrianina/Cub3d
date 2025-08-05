@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 14:20:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/30 15:47:19 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/08/05 13:47:07 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define SIZE_H 1080
 # define FIELD_OF_VIEW 60
 # define ROTATION_SPEED 0.045
-# define PLAYER_SPEED 1
+# define PLAYER_SPEED 2
 
 # define KEY_PRESS 2
 # define MOUSE_PRESS 4
