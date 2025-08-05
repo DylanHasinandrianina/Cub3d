@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/08/05 11:35:19 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/08/05 13:36:33 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,10 @@ void			draw_minimap_background(t_cub3d *ptr);
 void			draw_player(t_cub3d *ptr);
 void			draw_map(t_cub3d *ptr);
 int				is_wall(t_cub3d *cub3d, int x, int y);
+void			process_map_line(t_cub3d *cub3d, char *line, int y);
+void			process_player_direction(t_cub3d *cub3d, int x, int y,
+					char *line);
+void			iterate_map_lines(t_cub3d *cub3d);
 
 /* Raycaster and related functions */
 void			perform_raycaster(t_cub3d *ptr);
