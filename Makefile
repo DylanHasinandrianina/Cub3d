@@ -6,7 +6,7 @@
 #    By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/08 13:47:20 by mgodawat          #+#    #+#              #
-#    Updated: 2025/07/24 10:05:52 by shasinan         ###   ########.fr        #
+#    Updated: 2025/08/05 11:21:17 by shasinan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,34 @@ CFLAGS = -Wall -Werror -Wextra -Iincludes -Ilibft/includes -Iminilibx-linux -g
 NAME = cub3d
 SRCS_DIR = src
 OBJS_DIR = objs
-SRCS = $(shell find $(SRCS_DIR) -name '*.c')
+SRCS = 
+SRCS = \
+$(SRCS_DIR)/execution/arrowkeys.c \
+$(SRCS_DIR)/execution/cleanup.c \
+$(SRCS_DIR)/execution/draw_walls.c \
+$(SRCS_DIR)/execution/draw.c \
+$(SRCS_DIR)/execution/init_game.c \
+$(SRCS_DIR)/execution/key_hook.c \
+$(SRCS_DIR)/execution/mlx_utils.c \
+$(SRCS_DIR)/execution/raycaster.c \
+$(SRCS_DIR)/execution/render_frame.c \
+$(SRCS_DIR)/execution/texture.c \
+$(SRCS_DIR)/execution/wasd.c \
+$(SRCS_DIR)/parsing/map_checks/check_map_error.c \
+$(SRCS_DIR)/parsing/map_checks/get_map.c \
+$(SRCS_DIR)/parsing/map_checks/get_max_width.c \
+$(SRCS_DIR)/parsing/map_checks/maps_checks_utils.c \
+$(SRCS_DIR)/parsing/map_checks/normalize_map.c \
+$(SRCS_DIR)/parsing/other_elem_checks/check_color.c \
+$(SRCS_DIR)/parsing/other_elem_checks/check_element_error.c \
+$(SRCS_DIR)/parsing/other_elem_checks/check_element_position.c \
+$(SRCS_DIR)/parsing/other_elem_checks/check_texture.c \
+$(SRCS_DIR)/parsing/other_elem_checks/other_elem_utils.c \
+$(SRCS_DIR)/parsing/check_error.c \
+$(SRCS_DIR)/parsing/parsing.c \
+$(SRCS_DIR)/parsing/utils.c \
+$(SRCS_DIR)/main.c
+
 OBJS = $(patsubst $(SRCS_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
 
 # --- Library Configurations ---

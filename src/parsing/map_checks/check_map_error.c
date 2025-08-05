@@ -6,43 +6,45 @@
 /*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 17:22:16 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/26 11:30:49 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/08/05 11:35:03 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-int	is_player(char c)
+void	assign(int p[2], int i, int j)
 {
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (1);
-	return (0);
+	p[0] = i;
+	p[1] = j;
 }
 
-static int	is_map_closed(char **map)
+int	is_map_closed(char **map)
 {
-	int	x;
-	int	y;
+	int	i;
+	int	j;
+	int	h;
+	int	**v;
+	int	p[2];
 
-	y = 0;
-	while (map[y])
+	i = -1;
+	p[0] = -1;
+	h = 0;
+	while (map[h])
+		h++;
+	v = ft_calloc(h, sizeof(int *));
+	while (++i < h)
 	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == '0' || is_player(map[y][x]))
-			{
-				if (y == 0 || x == 0 || !map[y + 1] || !map[y][x + 1])
-					return (ft_putstr_fd("Error\nunclosed map\n", 2), 0);
-				if (map[y + 1][x] == ' ' || map[y - 1][x] == ' ' || map[y][x
-					+ 1] == ' ' || map[y][x - 1] == ' ')
-					return (ft_putstr_fd("Error\nunclosed map\n", 2), 0);
-			}
-			x++;
-		}
-		y++;
+		v[i] = ft_calloc(ft_strlen(map[i]), sizeof(int));
+		j = -1;
+		while (map[i][++j])
+			if (is_player(map[i][j]))
+				assign(p, i, j);
 	}
-	return (1);
+	if (p[0] == -1)
+		return (free_split_int(v, h), 0);
+	j = flood_fill(map, v, p[0], p[1]);
+	free_split_int(v, h);
+	return (j);
 }
 
 static int	is_one_player(char **map)

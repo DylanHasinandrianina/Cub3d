@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:45:06 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/30 15:42:26 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/08/05 11:35:19 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ int				skip_spaces(char *str, int i);
 void			free_split(char **split);
 void			free_partial_lines(char **content, int i);
 char			**list_to_array(t_list *lst);
+void			free_split_int(int **arr, int size);
+int				flood_fill(char **map, int **visited, int y, int x);
 
 /*map functions*/
 t_list			*get_map(char **file);
