@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:29:04 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/28 15:55:47 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/08/05 13:36:25 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,59 +32,18 @@ void	parse_map_file(int ac, char **av, t_cub3d *cub3d)
 		error_exit(NULL, cub3d);
 }
 
-static void	process_player_direction(t_cub3d *cub3d, int x, int y, char *line)
-{
-	cub3d->map[y][x] = 0;
-	cub3d->ppos_x = (x * cub3d->tile_size) + (cub3d->tile_size / 2.0);
-	cub3d->ppos_y = (y * cub3d->tile_size) + (cub3d->tile_size / 2.0);
-	if (line[x] == 'N')
-	{
-		cub3d->pdir_y = -1;
-		cub3d->plane_x = 0.66;
-	}
-	else if (line[x] == 'S')
-	{
-		cub3d->pdir_y = 1;
-		cub3d->plane_x = -0.66;
-	}
-	else if (line[x] == 'W')
-	{
-		cub3d->pdir_x = -1;
-		cub3d->plane_y = -0.66;
-	}
-	else if (line[x] == 'E')
-	{
-		cub3d->pdir_x = 1;
-		cub3d->plane_y = 0.66;
-	}
-}
-
-static void	iterate_map_lines(t_cub3d *cub3d, char *line, int *x, int *y)
+void	iterate_map_lines(t_cub3d *cub3d)
 {
 	t_list	*current;
-	size_t	len;
+	int		y;
 
 	current = cub3d->info->map_lines;
-	*y = 0;
+	y = 0;
 	while (current)
 	{
-		line = (char *)current->content;
-		len = ft_strlen(line);
-		cub3d->map[*y] = ft_calloc(cub3d->info->map_width, sizeof(int));
-		if (!cub3d->map[*y])
-			error_exit("malloc, initialize_game()", cub3d);
-		*x = -1;
-		while (++(*x) < cub3d->info->map_width)
-		{
-			if (*x < (int)len && ft_isdigit(line[*x]))
-				cub3d->map[*y][*x] = line[*x] - '0';
-			else if (*x < (int)len && is_player(line[*x]))
-				process_player_direction(cub3d, *x, *y, line);
-			else
-				cub3d->map[*y][*x] = 0;
-		}
+		process_map_line(cub3d, (char *)current->content, y);
 		current = current->next;
-		(*y)++;
+		y++;
 	}
 }
 
@@ -103,8 +62,6 @@ node, to find the y we can get the linked list size
 void	initialize_game(t_cub3d *cub3d)
 {
 	char	*line;
-	int		y;
-	int		x;
 	double	tile_w;
 	double	tile_h;
 
@@ -120,7 +77,7 @@ void	initialize_game(t_cub3d *cub3d)
 	cub3d->map = ft_calloc(cub3d->info->map_height, sizeof(int *));
 	if (!cub3d->map)
 		error_exit("malloc cub3d->map, initialize_game()", cub3d);
-	iterate_map_lines(cub3d, line, &x, &y);
+	iterate_map_lines(cub3d);
 	init_mlx(cub3d);
 	load_textures(cub3d);
 }

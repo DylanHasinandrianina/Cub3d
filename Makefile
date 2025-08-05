@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+         #
+#    By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/08 13:47:20 by mgodawat          #+#    #+#              #
-#    Updated: 2025/08/05 11:21:17 by shasinan         ###   ########.fr        #
+#    Updated: 2025/08/05 13:37:12 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Werror -Wextra -Iincludes -Ilibft/includes -Iminilibx-linux -g
 NAME = cub3d
 SRCS_DIR = src
 OBJS_DIR = objs
-SRCS = 
+SRCS =
 SRCS = \
 $(SRCS_DIR)/execution/arrowkeys.c \
 $(SRCS_DIR)/execution/cleanup.c \
@@ -30,6 +30,7 @@ $(SRCS_DIR)/execution/raycaster.c \
 $(SRCS_DIR)/execution/render_frame.c \
 $(SRCS_DIR)/execution/texture.c \
 $(SRCS_DIR)/execution/wasd.c \
+$(SRCS_DIR)/execution/process_map.c \
 $(SRCS_DIR)/parsing/map_checks/check_map_error.c \
 $(SRCS_DIR)/parsing/map_checks/get_map.c \
 $(SRCS_DIR)/parsing/map_checks/get_max_width.c \
