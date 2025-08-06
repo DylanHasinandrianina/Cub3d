@@ -6,7 +6,7 @@
 /*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 17:22:16 by shasinan          #+#    #+#             */
-/*   Updated: 2025/08/06 11:24:17 by shasinan         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:54:59 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,13 @@ int	check_map_validity(char **file, t_mapinfo *info)
 	map = normalize_map(array);
 	if (!map)
 		return (free_split(array), 1);
-	if (is_map_closed(array) == 0)
-		return (free_split(map), free_split(array), 1);
 	if (is_one_player(map) == 0)
 	{
 		ft_putstr_fd("Error\nmissing or more than one player\n", 2);
 		return (free_split(array), free_split(map), 1);
 	}
+	if (is_map_closed(array) == 0)
+		return (free_split(map), free_split(array), 1);
 	if (is_valid_map_elem(map) == 0)
 	{
 		ft_putstr_fd("Error\ninvalid map character or empty line in map\n", 2);
