@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 00:20:10 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/07/25 14:41:59 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/08/06 12:33:20 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_pixel_put(t_img *img, int x, int y, int color)
 
 static int	mouse_close(t_cub3d *cub3d)
 {
-	error_exit("Closing game via window button.", cub3d);
+	error_exit(NULL, cub3d);
 	return (0);
 }
 
