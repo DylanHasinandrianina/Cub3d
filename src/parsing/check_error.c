@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shasinan <shasinan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:16:16 by shasinan          #+#    #+#             */
-/*   Updated: 2025/07/25 13:26:28 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:10:41 by shasinan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ int	check_error(char **file, t_mapinfo *info)
 	if (check_texture_path(file, info))
 		return (1);
 	if (check_color_validity(file, info))
-	{
-		ft_putstr_fd("Error\ninvalid color format\n", 2);
 		return (1);
-	}
 	if (check_map_validity(file, info))
 		return (1);
 	return (0);
